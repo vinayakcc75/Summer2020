@@ -1,0 +1,14 @@
+.time input{
+    width:20%;
+    padding:5px;
+    height:auto;
+    background: transparent;
+    border:1px solid black
+}
+.time button{
+    padding:8px;
+    font-size:12px;
+    background-color:black;
+    color:white;
+    font-weight: bold;
+}

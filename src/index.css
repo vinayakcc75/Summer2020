@@ -1,0 +1,16 @@
+body {
+  /* background: linear-gradient(to left, transparent 0%,cyan 50%,transparent 100%);
+  background: -moz-linear-gradient(to left, transparent 0%,cyan 50%,transparent 100%);
+  background: -webkit-gradient(to left, transparent 0%,cyan 50%,transparent 100%); */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top:100px;
+  font-family: 'Times New Roman', Times, serif;
+}
+html{
+  height:100%;
+}
+body{
+ margin-top:100px;
+ min-height: 100%;
+}
