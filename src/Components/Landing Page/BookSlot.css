@@ -1,0 +1,63 @@
+.drop{
+    color:black;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    display:inline
+}
+
+.slot-book label{
+    display:inline-block;
+    width:130px;
+    text-align: left;
+}
+
+.slot-book button{
+    background:coral;
+    padding:3px;
+    margin:5px;
+    color:white;
+    font-size:17px;
+    border-radius: 10px;;
+    font-weight: bold;
+}
+#dropdown-item-button{
+    font-size:14px;
+    margin-left:15px;
+    width:180px;
+    justify-content: left;
+    border-radius:none;
+}
+.slot-book .shift{
+    margin-left:-10px;
+}
+.slot-book .shift1{
+    margin-left:-18px;
+}
+.slot-book input{
+    margin-left:10px;
+    padding:5px;
+    width:180px;
+    background:transparent;
+    color:black
+}
+
+.list{
+    justify-content: center;
+    padding:4px;
+    background:coral;
+    border-radius: 10px;;
+    font-size:14px;
+    color:white;
+    font-weight: bold;
+    width:180px;
+    border:0.5px solid black;
+}
+.list:hover{
+    transform:scale(1.03);
+    transition: 0.1s;
+}
+.slot-book button:hover{
+    transition:0.1s;
+    transform:scale(1.07);
+}

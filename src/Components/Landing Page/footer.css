@@ -1,0 +1,13 @@
+footer{
+    /* margin-top:60vh;  */
+    background-color: rgb(37, 37, 37);
+    color:white;
+    height:200px;
+    position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+}
+.foot p{
+    font-weight: bold;
+} 
