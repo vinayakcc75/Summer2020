@@ -1,43 +1,36 @@
-.pat-profile{
+.profile-main-wraper{
     display:flex;
-    justify-content: center;
-    width: 80%;
+    justify-content: space-around;
+    flex-direction: row;
+    border: 1px solid #000000;
     margin-left: 20%;
-    margin-right:20%;
-    text-align: center;
 }
-.pat-profile table {
-    width:40%;
-    font-size:15px;
-    justify-content: center;
-    border:2px double black;
-    border-radius: 2%;
-    box-shadow:0vh 0vh 1vh 1vh grey;
+
+.block-wraper{
+    display: flex;
+    justify-content: space-around;
 }
-.pat-profile img{
-    margin-left:65%;
-    width: 100px;
-    height: 100px;
+
+.profile-main{
+    padding:1%;
+    text-align: start;
+}
+
+.block-wraper img{
+    width:150px;
+    height:150px;
     border-radius: 75px;
 }
-.pat-profile button{
-    background-color: transparent;
-    color:black;
-    padding:5px;
-    border:2px double black;
-    font-weight: bold;
-    margin:10px;
-    width:140px;
-    margin-left:60%;
+
+.content{
+    display:inline-block;
+    width: 120px; 
+    padding-left: 250px;
+ }
+
+.value{
+    display:inline-block;
+    width: 300px;
+    margin-left: 50px;
 }
-.pat-profile button:hover{
-    transition: 0.2s;
-    transform: scale(1.05);
-    font:15px;
-    cursor:pointer
-}
-@media (max-width:786px){
-    .pat-profile table{
-        font-size:13px;
-    }
-}
+
