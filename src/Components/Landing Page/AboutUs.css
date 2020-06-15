@@ -9,21 +9,25 @@ h1{
 .aboutus{
   margin-top: 12vh;
   color:black;
+  padding: 10px;
 }
 .aboutus h4{
   text-shadow: 2px 2px  black
 }
-.card{
+.aboutUs-card{
   background-color: grey;
-  padding:1%;
+  padding:1opx;
   margin:10px;
   box-shadow:0px 0px 2px 2px  white;
   border-radius: 10px;
   transition:.5s;
-  color:white
+  color:white;
+  border:1px solid #000000;
+  width: 450px;
+  height: 300px;
 }
 
-.card:hover{
+.aboutUs-card:hover{
   transform: scale(1.05);
 }
 
@@ -31,4 +35,17 @@ h1{
   .aboutus{
     font-size:12px;
   }
+}
+
+.aboutUs-card img{
+  width: 300px;
+  height:200px;
+}
+
+.people-main{
+  display:inline-block;
+}
+
+.people-wraper{
+  text-align: center;
 }

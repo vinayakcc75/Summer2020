@@ -2,54 +2,102 @@ import React from 'react';
 import './Profile.css'
 import dp from './dp.jfif'
 
-const Profile =({user})=>{
+class Profile extends React.Component{
+  render(){
     return(
-        <div className="pat-profile">
-            <table>   
-                <tr>           
-                <img src={dp} alt="Profile pic" /> 
-                </tr>  
-                <tr>
-                    <button>Upload / Update  pic</button> 
-                </tr>
-                <br/><br/>
-                <tr>
-                <td> <h3>NAME : </h3> </td>
-                    <td> <h4>{`${user.username}`}</h4> </td>
-                </tr>
-                <tr>
-                    <td> <h3>USER ID : </h3> </td>
-                    <td> <h4>{`${user.user_id}`}</h4> </td>
-                </tr>
-                <tr>
-                    <td> <h3>EMAIL ID : </h3> </td>
-                    <td> <h4>{`${user.email}`}</h4> </td>
-                </tr>
-                <tr>
-                    <td> <h3>DATE OF BIRTH : </h3> </td>
-                    <td> <h4>15/11/1999</h4> </td>
-                </tr>
-                <tr>
-                    <td> <h3>GENDER : </h3> </td>
-                    <td> <h4>Male</h4> </td>
-                </tr>
-                <tr>
-                    <td> <h3>AGE : </h3> </td>
-                    <td> <h4>20</h4> </td>
-                </tr>
-                <tr>
-                    <td><h3>ADDRESS : </h3></td>
-                    <td><h4>Delhi,IN</h4></td>
-                </tr>
-                <br/><br/>
-                <tr>
-                    <button>Edit Details</button>
-                </tr>
-            </table>
+      <div className="profile-main-wraper">
+      <div className="profile-main">
+        <div className="block-wraper">
+            <div>
+              <h1>Your Profile</h1>
+            </div>
         </div>
-    );
+        <div className="block-wraper">
+            <div>
+              <div>
+                <img src={dp} alt="Profile Pic" /> 
+              </div>
+            </div>
+        </div>
+        <div className="block-wraper">
+            <div>
+              <div className="content">
+                <h3>Name</h3>
+              </div>
+              <div className="value">
+                <p>John</p>
+              </div>
+            </div>  
+        </div>  
+        <div className="block-wraper">
+          <diV>
+            <div className="content">
+              <h3>Age</h3>
+            </div>
+            <div className="value">
+             <p>25</p>
+            </div>
+          </diV>
+        </div>
+        <div className="block-wraper">
+          <div>
+            <div className="content">
+              <h3>Gender</h3>
+            </div>
+            <div className="value">
+             <p>Male</p>
+            </div>
+          </div>
+        </div>
+        <div className="block-wraper">
+          <div>
+            <div className="content">
+              <h3>Date of Birth</h3>
+            </div>
+            <div className="value">
+             <p>DD-MM-YYYY</p>
+            </div>
+          </div>  
+        </div>
+        <div className="block-wraper">
+          <div>
+            <div className="content">
+              <h3>E-mail</h3>
+            </div>
+            <div className="value">
+             <p>john@exmaple.com</p>
+            </div>
+          </div>  
+        </div>
+        <div className="block-wraper">
+          <div>
+            <div className="content">
+              <h3>Patient Id</h3>
+            </div>
+            <div className="value">
+             <p>11100</p>
+            </div>
+          </div>  
+        </div>
+        <div className="block-wraper">
+          <div>
+            <div className="content">
+              <h3>Address</h3>
+            </div>
+            <div className="value">
+             <p>Format</p>
+            </div>
+          </div>    
+        </div>
+        <div className="block-wraper">
+          <div>
+            <button>Edit Details</button>
+          </div>
+        </div>
+      </div>
+      </div>
+      );
+  }  
 }
-
 export default Profile; 
  
-

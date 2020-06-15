@@ -3,45 +3,38 @@ import './AboutUs.css';
 import Swiper from 'swiper'
 import 'swiper/css/swiper.min.css'
 import doc from './OQ6UTW0.jpg';
+import doc1 from './assets/doctor1.jfif';
+import doc2 from './assets/doctor2.jfif';
+import doc3 from './assets/doctor3.jfif';
 const arr=[1,2,3,4,5,6,7,8,9,10];
 
 function Doctor(props){
   return (
-    <div className="card swiper-slide">
-      <img src={doc} width="80" height="80" alt="Doctor's pic" /><br/>
-      {/* <a href="#">{props.name}</a> */}
-      <h4>{props.name}</h4>
-      <h4>{props.designation}</h4>
+    <div className="aboutUs-card">
+      <img src={props.image} width="80" height="80" alt="Doctor's pic" /><br/>
+      <h2>{props.name}</h2>
+      <h3>{props.designation}</h3>
     </div>
   );
 }
   
 class  People extends React.Component{
-
-  componentDidMount(){
-    this.swiper=new Swiper('.s1',
-      {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      }
-    );
-  }
   render(){
     return(
-      <div>
-        <h1>Our Crew</h1>
-        <div className=" s1 swiper-container">
-          <div className="swiper-wrapper">
-            {arr.map(()=>{return <Doctor name="Doctor's Name" designation="Designation"/>})}
-          </div> 
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-         </div>
+      <div className="people-wraper">
+      <div className="people-main">
+        <h1>Crew</h1>
+        <div>
+          <table>
+            <tr>
+                <td><Doctor image={doc3} name="Jafar" designation="Oncologist"/></td> 
+                <td><Doctor image={doc1} name="Jareena" designation="Cardiologist"/></td> 
+                <td><Doctor image={doc2} name="John" designation="Gynaecalogist"/></td> 
+            </tr>  
+          </table>  
         </div>
+      </div>
+      </div>
       );
     }  
 }
@@ -107,9 +100,8 @@ class AboutUs extends React.Component{
   render(){
     return(
       <div className="aboutus">
-        <History/>
+        <History/><hr/>
         <People/>
-        <AchievementSection/>
         <footer style={{
         "backgroundColor": "black",
         "color":"white",
