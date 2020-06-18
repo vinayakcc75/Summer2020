@@ -9,6 +9,7 @@
     "@trendmicro/react-sidenav": "^0.5.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "formik": "^2.1.4",
     "glyphicons": "^0.2.0",
     "infinite-react-carousel": "^1.2.11",
     "material-ui": "^0.20.2",
@@ -31,7 +32,8 @@
     "react-scripts": "3.4.1",
     "react-sidebar": "^3.0.2",
     "react-timeslot-calendar": "^0.2.0",
-    "swiper": "^5.4.2"
+    "swiper": "^5.4.2",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",

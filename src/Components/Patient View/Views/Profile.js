@@ -1,103 +1,137 @@
-import React from 'react';
-import './Profile.css'
-import dp from './dp.jfif'
+import React from "react";
+import "./Profile.css";
+import dp from "./dp.jfif";
+import ProfileValidation from "./ProfileValidation";
 
-class Profile extends React.Component{
-  render(){
-    return(
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.saveAndToggle = this.saveAndToggle.bind(this);
+    this.state = {
+      open: false,
+      data: {
+        fname: "John",
+        lname: "Abraham",
+        age: 25,
+        gender: "Male",
+        dob: "yyyy-mm-dd",
+        email: "john@gmail.com",
+        patId: "111100",
+        address: "Format",
+      },
+    };
+  }
+
+  toggle = () => {
+    this.setState({ open: !this.state.open });
+  };
+
+  saveAndToggle = (newdata) => {
+    this.toggle();
+    this.setState({ data: newdata });
+  };
+
+  render() {
+    return (
       <div className="profile-main-wraper">
-      <div className="profile-main">
-        <div className="block-wraper">
-            <div>
-              <h1>Your Profile</h1>
-            </div>
-        </div>
-        <div className="block-wraper">
-            <div>
+        {this.state.open === true && (
+          <ProfileValidation
+            data={this.state.data}
+            toggle={this.saveAndToggle}
+          />
+        )}
+
+        {this.state.open === false && (
+          <div className="profile-main">
+            <div className="block-wraper">
               <div>
-                <img src={dp} alt="Profile Pic" /> 
+                <h1>Your Profile</h1>
               </div>
             </div>
-        </div>
-        <div className="block-wraper">
+            <div className="block-wraper">
+              <div>
+                <img src={dp} alt="Profile Pic" />
+              </div>
+            </div>
             <div>
-              <div className="content">
-                <h3>Name</h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h3>First Name</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.fname}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Last Name</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.lname}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Patient Id</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.patId}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Gender</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.gender}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Age</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.age}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Date of Birth</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.dob}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3>Address</h3>
+                    </td>
+                    <td width="50px" />
+                    <td>
+                      <p>{this.state.data.address}</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="block-wraper">
+              <div>
+                <button onClick={this.toggle}>Edit Details</button>
               </div>
-              <div className="value">
-                <p>John</p>
-              </div>
-            </div>  
-        </div>  
-        <div className="block-wraper">
-          <diV>
-            <div className="content">
-              <h3>Age</h3>
-            </div>
-            <div className="value">
-             <p>25</p>
-            </div>
-          </diV>
-        </div>
-        <div className="block-wraper">
-          <div>
-            <div className="content">
-              <h3>Gender</h3>
-            </div>
-            <div className="value">
-             <p>Male</p>
             </div>
           </div>
-        </div>
-        <div className="block-wraper">
-          <div>
-            <div className="content">
-              <h3>Date of Birth</h3>
-            </div>
-            <div className="value">
-             <p>DD-MM-YYYY</p>
-            </div>
-          </div>  
-        </div>
-        <div className="block-wraper">
-          <div>
-            <div className="content">
-              <h3>E-mail</h3>
-            </div>
-            <div className="value">
-             <p>john@exmaple.com</p>
-            </div>
-          </div>  
-        </div>
-        <div className="block-wraper">
-          <div>
-            <div className="content">
-              <h3>Patient Id</h3>
-            </div>
-            <div className="value">
-             <p>11100</p>
-            </div>
-          </div>  
-        </div>
-        <div className="block-wraper">
-          <div>
-            <div className="content">
-              <h3>Address</h3>
-            </div>
-            <div className="value">
-             <p>Format</p>
-            </div>
-          </div>    
-        </div>
-        <div className="block-wraper">
-          <div>
-            <button>Edit Details</button>
-          </div>
-        </div>
+        )}
       </div>
-      </div>
-      );
-  }  
+    );
+  }
 }
-export default Profile; 
- 
+export default Profile;
