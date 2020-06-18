@@ -17,7 +17,10 @@ class LoginPopup extends React.Component{
                 username:"",
                 user_id:"",
                 phone:"",
-                user_type:""
+                user_type:"",
+                dob:new Date(),
+                gender:"",
+                address:""
         }
     }
 }

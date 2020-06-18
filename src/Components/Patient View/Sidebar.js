@@ -28,9 +28,6 @@ class Sidebar extends React.Component{
                 <Link to='/records'>
                     <button >See Records</button>
                 </Link>
-                <Link to='/history'>
-                    <button >History</button>
-                </Link>
             </div>
             </nav>):(<div></div>)}
             </div>
@@ -43,9 +40,6 @@ class Sidebar extends React.Component{
                 </Link>
                 <Link to='/records'>
                     <button >See Records</button>
-                </Link>
-                <Link to='/history'>
-                    <button >History</button>
                 </Link>
             </div>
             </nav>

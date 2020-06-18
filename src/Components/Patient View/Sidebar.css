@@ -1,8 +1,8 @@
 footer{
-    top:1000px;
+    top:900px;
 }
 .normal-side-bar{
-    height:140%;
+    height:900px;
 }
 .patient-sidebar .button-side-bar nav{
     background-color:#ff8d00;
@@ -48,7 +48,7 @@ footer{
 }
 .patient-sidebar .sidebar{
     display:flex;
-    height:1150px;
+    height:850px;
     top:0;
     left:0;
     position:absolute;
@@ -60,7 +60,7 @@ footer{
 }
 .patient-sidebar .side-links{
     display:flex;    
-    justify-content: space-evenly;
+    margin-top:20px;
     flex-direction:column;
 }
 .patient-sidebar .center{
@@ -72,7 +72,7 @@ footer{
     color: black;
     text-shadow:silver;
     text-decoration: none;
-    margin:5px;
+    margin:70px;
     padding:5px;
     background-color:transparent;
     transition-duration: 0.4s;

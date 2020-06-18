@@ -1,7 +1,6 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-import History from './Views/History';
 import Profile from './Views/Profile';
 import Records from './Views/Records';
 import './PatientView.css';
@@ -30,7 +29,6 @@ class PatientView extends React.Component{
                     <Route  path='/patient/:id' component={this.welcome}></Route>
         <Route  path='/profile' render={()=><Profile user={this.props.user}/>}></Route>
                     <Route  path='/records' component={Records}></Route>
-                    <Route  path='/history' component={History}></Route>
                 </Switch>
                 </Router>
             </div>

@@ -12,3 +12,9 @@
     color:white;
     font-weight: bold;
 }
+.time label{
+    display:inline-block;
+    width:120px;
+    text-align: left;
+    font-weight: bold;
+}

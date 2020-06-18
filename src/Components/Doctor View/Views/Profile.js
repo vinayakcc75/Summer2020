@@ -26,6 +26,10 @@ const Profile =({user})=>{
                     <td> <h4>{`${user.email}`}</h4> </td>
                 </tr>
                 <tr>
+                    <td> <h3>DEPARTMENT ID : </h3> </td>
+                    <td> <h4>{`${user.dept_id}`}</h4> </td>
+                </tr>
+                <tr>
                     <td> <h3>DATE OF BIRTH : </h3> </td>
                     <td> <h4>15/11/1999</h4> </td>
                 </tr>

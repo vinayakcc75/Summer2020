@@ -9,9 +9,8 @@ import BookSlot from './BookSlot';
 import PatientView from '../Patient View/PatientView';
 import DoctorView from '../Doctor View/DoctorView';
 import NavBar from './Navbar/Navbar';
-import './footer.css';
 import './LandingPage.css';
-
+import Footer from './Footer';
 class LandingPage extends Component{
     constructor(){
         super();
@@ -25,6 +24,7 @@ class LandingPage extends Component{
                 email:"",
                 user_type:"",
                 user_id:"",
+                dept_id:""
             }
         }
     }
@@ -38,6 +38,7 @@ class LandingPage extends Component{
             email:data.email,
             user_type:data.user_type,
             user_id:data.user_id,
+            dept_id:data.dept_id
         }))
     }
     Foot=()=>{
@@ -112,16 +113,8 @@ class LandingPage extends Component{
                 {this.state.access===true&&
                 <Route path='/doctor/:id' render={(routeProps) => <DoctorView user={this.state.user} {...routeProps}/>}/>}
         </Switch>
+        <Footer/>
         </Router>
-        <footer className="foot">
-            <p>CONTACT US</p>
-            <p className="contactus">
-                        Telephone : +21 2289373, +21 2341245<br/>
-                        Email : hospital@gmail.com<br/>
-                        Address : Delhi, India<br/>
-            </p>
-            
-        </footer>
         </div>
     );
     }

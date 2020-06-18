@@ -7,5 +7,5 @@ const PatientHistory =()=>{
         </div>
     );
 }
- export default PatientHistory; 
+export default PatientHistory; 
  

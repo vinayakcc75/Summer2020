@@ -10,6 +10,7 @@
     display: inline-block;
     width:140px;
     text-align:left;
+    font-weight: bold;
 }
 .entry button{
     padding:8px;
