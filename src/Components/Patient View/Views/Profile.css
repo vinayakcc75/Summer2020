@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-left: 20%;
   text-align: start;
 }
 
