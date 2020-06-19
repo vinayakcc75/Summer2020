@@ -1,7 +1,7 @@
 import React from "react";
 import "./Profile.css";
 import dp from "./dp.jfif";
-import ProfileValidation from "./ProfileValidation.js";
+import ProfileValidation from "./ProfileValidation";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Profile extends React.Component {
         lname: "Abraham",
         age: 25,
         gender: "Male",
-        dob: "yyyy-mm-dd",
+        dob: "dd-mm-yyyy",
         email: "john@gmail.com",
         patId: "111100",
         address: "Format",
@@ -111,17 +111,18 @@ class Profile extends React.Component {
                       <p>{this.state.data.dob}</p>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <h3>Address</h3>
-                    </td>
-                    <td width="50px" />
-                    <td>
-                      <p>{this.state.data.address}</p>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
+            </div>
+            <div className="block-wraper">
+              <div>
+                <div>
+                  <h3>Address</h3>
+                </div>
+                <div>
+                  <p className="addr">{this.state.data.address}</p>
+                </div>
+              </div>
             </div>
             <div className="block-wraper">
               <div>

@@ -28,6 +28,7 @@ class ProfileValidation extends React.Component {
               gender: Yup.string().required("Required"),
               dob: Yup.date().required("Required"),
               email: Yup.string().email().required("Required"),
+              address: Yup.string().required("Required"),
             })}
           >
             {(props) => {
@@ -56,9 +57,11 @@ class ProfileValidation extends React.Component {
                       className={errors.fname && touched.fname && "error"}
                     />
                   </div>
+
                   {errors.fname && touched.fname && (
                     <div className="input-feedback">{errors.fname}</div>
                   )}
+
                   <div className="label-style">
                     <label htmlFor="lname">Last Name</label>
                   </div>
@@ -76,6 +79,7 @@ class ProfileValidation extends React.Component {
                   {errors.lname && touched.lname && (
                     <div className="input-feedback">{errors.lname}</div>
                   )}
+
                   <div className="input-style">
                     <table>
                       <tbody>
@@ -94,6 +98,7 @@ class ProfileValidation extends React.Component {
                               className={
                                 errors.gender && touched.gender && "error"
                               }
+                              defaultChecked={values.gender === "Male"}
                             />
                           </td>
                           <td width="30px" />
@@ -111,15 +116,13 @@ class ProfileValidation extends React.Component {
                               className={
                                 errors.gender && touched.gender && "error"
                               }
+                              defaultChecked={values.gender === "Female"}
                             />
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  {errors.gender && touched.gender && (
-                    <div className="input-feedback">{errors.gender}</div>
-                  )}
                   <div className="label-style">
                     <label htmlFor="dob">Date of Birth</label>
                   </div>
@@ -136,9 +139,11 @@ class ProfileValidation extends React.Component {
                       }
                     />
                   </div>
+
                   {errors.dob && touched.dob && (
                     <div className="input-feedback">{errors.dob}</div>
                   )}
+
                   <div className="label-style">
                     <label htmlFor="email">Email</label>
                   </div>
@@ -156,6 +161,24 @@ class ProfileValidation extends React.Component {
                   </div>
                   {errors.email && touched.email && (
                     <div className="input-feedback">{errors.email}</div>
+                  )}
+                  <div className="label-style">
+                    <label htmlFor="address">Address</label>
+                  </div>
+                  <div className="input-style">
+                    <textarea
+                      name="address"
+                      rows="7"
+                      cols="40"
+                      placeholder="Enter Your Address"
+                      value={values.address}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={errors.address && touched.address && "error"}
+                    />
+                  </div>
+                  {errors.address && touched.address && (
+                    <div className="input-feedback">{errors.address}</div>
                   )}
                   <div className="block">
                     <div>
