@@ -1,7 +1,7 @@
 import React from "react";
 import "./Profile.css";
 import dp from "./dp.jfif";
-import ProfileValidation from "./ProfileValidation";
+import ProfileValidation from "./ProfileValidation.js";
 
 class Profile extends React.Component {
   constructor(props) {
