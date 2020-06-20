@@ -3,12 +3,12 @@ import './TimeSlotsCalender.css'
 class TimeSlotsCalender extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-           selectedSlot:""
-        }
     }
-    selectSlot=(k)=>{
-        this.setState({selectedSlot:k},()=>console.log(this.state.selectedSlot));
+    selectSlot= (k)=>{
+        const b=':00';
+        let position=5;
+        const output = [k.slice(0, position)]
+        this.props.upDate(output+b);
     }
     radiobuttonSlots=(start,end)=>{
         let k= start+"-"+end;
@@ -34,10 +34,8 @@ class TimeSlotsCalender extends React.Component{
             ['19:30','20:00']
         ]
     render(){
-        const {current_date}= this.props;
         return(
             <div className="timeslot">
-                {console.log(current_date)}
                 <div className="morning">
                 <h2>Morning Slot Timings</h2>
                 {this.morningTimes.map(times=>{return(this.radiobuttonSlots(times[0],times[1]))})}

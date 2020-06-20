@@ -50,3 +50,19 @@
 .slot-book .shift label{
     text-align: center;
 }
+.color.color {
+   width:30%;
+   background: black;
+   color:white;
+    font-weight:bold;
+}
+.color{
+    width:30%;
+    margin-right:100%;
+    font-size:15px;
+    text-align: center;
+}
+.sc-bxivhb {
+    margin-left:35%;
+    margin-right:35%;
+}

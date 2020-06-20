@@ -34,7 +34,7 @@ class NewEntry extends React.Component{
     presChange=(event)=>{
         this.setState({prescription:event.target.value})
     }
-    display=()=>{
+    submit=()=>{
         console.log(this.state.patientId," ",this.state.patientName);
     }
     render(){
@@ -55,7 +55,7 @@ class NewEntry extends React.Component{
 
             <label htmlFor="prescription">Prescription</label> 
             : <span onChange={this.presChange} className="span"  contentEditable="true" /><br/><br/><br/>
-            <button onClick={this.display} type="button">Submit</button>
+            <button onClick={this.submit} type="button">Submit</button>
          </form>
         </div>
     );}

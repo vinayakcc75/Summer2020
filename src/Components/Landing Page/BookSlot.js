@@ -1,49 +1,18 @@
 import React from 'react';
 import './AboutUs.css';
-import moment from 'moment';
-import ReactTimeslotCalendar from 'react-timeslot-calendar';
 import DatePicker from 'react-date-picker';
 import TimeSlotsCalender from './TimeSlotsCalender'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
 import './BookSlot.css';
-let timeslots = [
-    ['13', '14'], // 1:00 AM - 2:00 AM
-    ['14', '15'], // 2:00 AM - 3:00 AM
-    ['16', '17'], // 4:00 AM - 6:00 AM
-    '18', // 5:00 AM
-    ['19', '20'] // 4:00 AM - 6:00 AM - 7:00AM - 8:00AM
-];
-let lastSelectedTimeslot = [
-    ['13', '14'], // 1:00 AM - 2:00 AM
-    
-];
-// let disabledTimeslots = [
-//     {
-//         startDate: 'April 30th 2017, 12:00:00 AM',
-//         format: 'MMMM Do YYYY, h:mm:ss A',
-//     },
-//     {
-//         startDate: 'May 1st 2017, 3:00:00 PM',
-//         format: 'MMMM Do YYYY, h:mm:ss A',
-//     },
-//     {
-//         startDate: 'May 5th 2017, 6:00:00 PM',
-//         format: 'MMMM Do YYYY, h:mm:ss A',
-//     },
-// ];
+import ModernDatepicker from 'react-modern-datepicker';
 
-let startDateInputProps = {
-    class: 'some-random-class',
-    name: 'May 28th 2020, 6:00:00 PM',
-};
- let   ignoreweekends={
-    'saturdays': false,
-    'sundays': false
-    }
+//YYYY-MM-DD
+//HH:MI:SS
 let a=[];
-let doctorsArray=[];
+
+let doctorsArray=['ram'];
+
 class BookSlot extends React.Component{
     constructor(){
         super();
@@ -52,18 +21,24 @@ class BookSlot extends React.Component{
             arr:"",
             current_date:new Date(),
             doctor:'Select Doctor',
+            dept_id:"",
+            now:false,
             docArr:"",
-            docId:"",
+            doctor_id:"",
             patientEmail:'',
             patientName:'',
             patientPhone:'',
-            date: new Date()
+            date:'',
+            now:false,
+            selectedSlot:'',
+            slotsOpen:false
         }
   }
- 
+
   onChange = (date) =>{
       this.setState({date})
-       this.setState({ current_date:date },()=>console.log(this.state.current_date));
+      this.setState({ current_date:date },()=>console.log(this.state.current_date));
+      this.setState({slotsOpen:true})
   }
  
     componentDidMount=()=>{
@@ -72,35 +47,40 @@ class BookSlot extends React.Component{
           headers: {'Content-Type': 'application/json'},
         })
         .then(response => response.json())
-        .then(ret => {
+        .then(async ret => {
           if (ret.status===true) {
-            this.setState({arr: ret.message});
-            this.state.arr.map((arr)=>{a.push(arr.department_name)})
+            await(this.setState({arr: ret.message},()=>console.log(this.state.arr)));
+            await(this.state.arr.map((arr)=>{a.push(arr.department_name)}));
             console.log(a);
           }
         })
     }
 
-    getDeptID=(a)=>{
-        this.setState({dept:a.value});
-        this.state.arr.map(arr=>{
+     getDeptID=async(a)=>{
+       this.setState({doctor:"Select Doctor"})
+        await(this.setState({dept:a.value}));
+        await(this.state.arr.map(arr=>{
             if(arr.department_name===a.value){
                 this.setState({dept_id:arr.department_id},()=>console.log(this.state.dept_id))
             }
-        })
+        }))
         fetch('http://localhost:8080/department/doctor', {
-          method: 'get',
+          method: 'put',
           headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            department_id:this.state.dept_id
+          })
         })
         .then(response => response.json())
-        .then(ret => {
+        .then(async (ret) => {
           if (ret.status===true) {
-            this.setState({arr: ret.message});
-            this.state.arr.map((arr)=>{doctorsArray.push(arr.doctor_name)})
-            console.log(doctorsArray);
-          }
-        })
-    }
+            this.docArr="";
+            await(this.setState({docArr: ret.message}));
+            doctorsArray=[];
+            await(this.state.docArr.map((arr)=>{doctorsArray.push(arr.doctor)}))}
+            this.setState({now:true})
+         })
+     }
    
     slotemailChange=(event)=>{
         this.setState({patientEmail:event.target.value});
@@ -111,16 +91,45 @@ class BookSlot extends React.Component{
     slotphoneChange=(event)=>{
         this.setState({patientPhone:event.target.value});
     }
-    updateDoctors=()=>{
-        
+    
+    getDocID=async(a)=>{
+        await(this.setState({doctor:a.value},()=>console.log(this.state.doctor)));
+        this.state.docArr.map(arr=>{
+            if(arr.doctor===a.value){
+              this.setState({doctor_id:arr.doctor_id},()=>console.log('docid',this.state.doctor_id))
+            }
+        })
     }
-    getDocID=(a)=>{
-        this.setState({doctor:a.value});
-        // this.state.doctorArray.map(arr=>{
-        //     if(arr.doctor_name===a.value){
-        //         this.setState({doc_Id:arr.department_id},()=>console.log(this.state.dept_id))
-        //     }
-        // })
+    display=()=>{
+      console.log(this.state.selectedSlot,' ',this.state.date)
+    }
+    upDate=(k)=>{
+      this.setState({selectedSlot:k},()=>{
+        console.log(this.state.selectedSlot)
+      })
+    }
+    bookAppointmentNow=()=>{
+      console.log('entered')
+      fetch('http://localhost:8080/appointments', {
+          method: 'post',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify({
+              date:this.state.date,
+              time:this.state.selectedSlot,
+              doctor_id:this.state.doctor_id
+            })
+        })
+        .then(response => response.json())
+        .then(async ret => {
+          if (ret.status===true) {
+               alert('Slot successfully Booked');
+          }
+          else{
+            console.log(ret);
+          }
+        })
+        console.log('exit')
+
     }
     render(){
     return(
@@ -143,7 +152,6 @@ class BookSlot extends React.Component{
         <h3>⬇</h3>
         <div className="shift" >
         {/* <label  htmlFor="dept">Select Department</label> */}
-      
         <Dropdown 
         onChange={this.getDeptID} 
         options={a}
@@ -154,11 +162,9 @@ class BookSlot extends React.Component{
         <br/><br/>
         {/* <label htmlFor="doc">Select Doctor</label><br/><br/> */}
 
-        {this.updateDoctors()}
-
         <Dropdown 
-        onChange={this.getDocID} 
         options={doctorsArray}
+        onChange={this.getDocID} 
         controlClassName="controlClassName"
         menuClassName="menuClassName"
         className="myClassName"
@@ -167,23 +173,27 @@ class BookSlot extends React.Component{
         <h3>⬇</h3>
         </div>
         </div>
-        <h3>Select a date to fix an appointment</h3>
         <div className='head'>
-        <DatePicker
-          onChange={this.onChange}
-          value={this.state.date}
+        <h3>Select a date to fix an appointment</h3>
+        <ModernDatepicker
+          className="color"
+          date={this.state.date}
+          format={'YYYY-MM-DD'}
+          showBorder
+          onChange={date => this.onChange(date)}
+          placeholder={'Select a date'}
         />
         <br/><br/>
         <h3>⬇</h3>
         <h3>Select a time slot</h3>
-        <TimeSlotsCalender current_date={this.current_date}/>
-        
-        <button id="solo" type="button">Book Slot</button>
+        {this.state.slotsOpen && 
+        <TimeSlotsCalender 
+        upDate={this.upDate}/>}
+        <button id="solo" type="button" onClick={this.bookAppointmentNow} >Book Slot</button>
         </div>
         </form>
         </div>
-    );
-}
-}
+    );}
+    }
 
  export default BookSlot; 

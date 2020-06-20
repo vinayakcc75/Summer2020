@@ -50,7 +50,7 @@ class LoginPopup extends React.Component{
     
      verify=()=>{
     console.log('entered');
-    fetch('http://localhost:8080/api/authenticate', {
+    fetch('http://localhost:8080/authenticate', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

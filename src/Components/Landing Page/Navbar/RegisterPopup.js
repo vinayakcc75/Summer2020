@@ -14,15 +14,18 @@ class RegisterPopup extends React.Component{
             arr:"",
             placeholder:"Select Department",
             user:{
-            username:'',
-            phone:"",
-            password:"",
-            email:"",
-            type:"0",
-            dept_id:"",
-            dob:new Date(),
-            gender:"",
-            address:""
+              username:'',
+              phone:"",
+              password:"",
+              email:"",
+              type:"0",
+              department_id:"",
+              age:"",
+              gender:"",
+              address:"",
+              specialization:"Cardio",
+              qualification:"MBBS",
+              experience:"2"
             }
         }
     }
@@ -44,14 +47,19 @@ class RegisterPopup extends React.Component{
         this.setState({placeholder:a.value});
         this.state.arr.map(arr=>{
           if(arr.department_name===a.value){
-              this.setState({dept_id:arr.department_id})
+            this.setState(Object.assign(this.state.user,{department_id:arr.department_id}),()=>console.log(this.state.user.department_id));
           }
       })
     }
-
-    nameChange=(event)=>{
-        this.setState(Object.assign(this.state.user,{username:event.target.value}));
+    ageChange=(event)=>{
+      this.setState(Object.assign(this.state.user,{age:event.target.value}));
+  }
+    firstnameChange=(event)=>{
+        this.setState(Object.assign(this.state.user,{firstname:event.target.value}));
     }
+    lastnameChange=(event)=>{
+      this.setState(Object.assign(this.state.user,{lastname:event.target.value}));
+  }
     passChange=(event)=>{
         this.setState(Object.assign(this.state.user,{password:event.target.value}));
     }
@@ -79,25 +87,32 @@ class RegisterPopup extends React.Component{
     }
     genderChange=(text)=>{
       if(text==='male'){
-      this.setState(Object.assign(this.state.user,{gender:'male'}),()=>console.log(this.state.gender));
+      this.setState(Object.assign(this.state.user,{gender:'M'}),()=>console.log(this.state.gender));
       }
       else{
-      this.setState(Object.assign(this.state.user,{gender:'female'}),()=>console.log(this.state.gender));
+      this.setState(Object.assign(this.state.user,{gender:'F'}),()=>console.log(this.state.gender));
       }
   }
     
   submitF=()=>{
       console.log('entered');
-    fetch('http://localhost:8080/api/register', {
+    fetch('http://localhost:8080/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        department_id:this.state.user.dept_id,  
-        username:this.state.user.username,
+        department_id:this.state.user.department_id,  
+        firstname:this.state.user.firstname,
+        lastname:this.state.user.lastname,
         phone:this.state.user.phone,
         password:this.state.user.password,
         email:this.state.user.email,
-        type:this.state.user.type
+        type:this.state.user.type,
+        age:this.state.user.age,
+        gender:this.state.user.gender,
+        address:this.state.user.address,
+        specialization:this.state.user.specialization,
+        qualification:this.state.user.qualification,
+        experience:this.state.user.experience
       })
     })
     .then(response => response.json())
@@ -107,7 +122,12 @@ class RegisterPopup extends React.Component{
         window.location.reload();
         this.props.onRouteChange('none');
       }
+      else{
+        console.log(ret.message);
+
+      }
     })
+    console.log('exit');
   }
     render(){
         const {onRouteChange} = this.props;
@@ -130,8 +150,10 @@ class RegisterPopup extends React.Component{
                 <br/>
                 { (this.state.operator==='patient')?(
                     <div>
-                    <input type="text" placeholder="Enter Patient's Name"
-                    onChange={this.nameChange}></input><br/><br/>
+                    <input type="text" placeholder="Enter First Name"
+                    onChange={this.firstnameChange}></input><br/><br/>
+                    <input type="text" placeholder="Enter Last Name"
+                    onChange={this.lastnameChange}></input><br/><br/>
                     <input type="email" placeholder="Enter Email"
                     onChange={this.emailChange}></input><br/><br/>
                     <input type="password" placeholder="Enter Password"
@@ -151,13 +173,18 @@ class RegisterPopup extends React.Component{
                     <br/>
                     <input type="text" placeholder="Enter Address"
                     onChange={this.addressChange}></input><br/><br/>
+                    <br/>
+                    <input type="number" placeholder="Enter Age"
+                    onChange={this.ageChange}></input><br/><br/>
                     <button type="button" onClick={this.submitF} >Register as Patient</button>
                     </div>
                 ):
                 (
                     <div>
-                    <input type="text" placeholder="Enter Doctor Name"
-                    onChange={this.nameChange}></input><br/><br/>
+                    <input type="text" placeholder="Enter First Name"
+                    onChange={this.firstnameChange}></input><br/><br/>
+                    <input type="text" placeholder="Enter Last Name"
+                    onChange={this.lastnameChange}></input><br/><br/>
                     <input type="email" placeholder="Enter Email"
                     onChange={this.emailChange}></input><br/><br/>
                     <input type="password" placeholder="Enter Password"
@@ -177,6 +204,8 @@ class RegisterPopup extends React.Component{
                     <br/>
                     <input type="text" placeholder="Enter Address"
                     onChange={this.nameChange}></input><br/><br/>
+                     <input type="number" placeholder="Enter Age"
+                    onChange={this.ageChange}></input><br/><br/>
                     <Dropdown 
                     onChange={this.getDeptID}
                     options={a} 

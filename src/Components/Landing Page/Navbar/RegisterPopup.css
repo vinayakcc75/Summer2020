@@ -1,9 +1,9 @@
 .register-container{
     background-color: white;
     width:40%;
-    height:520px;
+    height:580px;
     display:block;
-    position:fixed;
+    position:absolute;
     justify-content: center;
     left:0;
     top:0;
@@ -45,7 +45,7 @@
 @media (max-width:736px){
     .register-container{
         width:70%;
-        height:500px;
+        height:560px;
         margin-right:15%;
         margin-left: 15%;
     }
