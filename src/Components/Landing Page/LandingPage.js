@@ -33,7 +33,7 @@ class LandingPage extends Component{
     }
     loadUser=(data)=>{
         this.setState(Object.assign(this.state.user,{
-            username:data.username,
+            username:data.firstname,
             phone:data.phone,
             email:data.email,
             user_type:data.user_type,
@@ -107,7 +107,7 @@ class LandingPage extends Component{
                 <Route path="/register" component={this.Register}/>
                 <Route path="/aboutus" component={AboutUs}/>
                 <Route path='/facilities' component={Facilities}/>
-                <Route path='/bookslot' component={BookSlot}/>
+                <Route path='/bookslot' render={(routeProps) => <BookSlot user={this.state.user} {...routeProps}/>}/>
                 {this.state.access===true&&
                 <Route path='/patient/:id' render={(routeProps) => <PatientView user={this.state.user} {...routeProps}/>}/>}
                 {this.state.access===true&&

@@ -14,8 +14,8 @@ let a=[];
 let doctorsArray=['ram'];
 
 class BookSlot extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             dept:'Select Department',
             arr:"",
@@ -28,17 +28,39 @@ class BookSlot extends React.Component{
             patientEmail:'',
             patientName:'',
             patientPhone:'',
-            date:'',
+            date:new Date(),
             now:false,
             selectedSlot:'',
-            slotsOpen:false
+            slotsOpen:false,
+            patientID:"",
+            openDates:false,
+            disabledSlots:""
         }
   }
 
-  onChange = (date) =>{
-      this.setState({date})
-      this.setState({ current_date:date },()=>console.log(this.state.current_date));
-      this.setState({slotsOpen:true})
+  onChange = async (date) =>{
+      await this.setState({date})
+      await this.setState({ current_date:date },()=>console.log(this.state.current_date));
+       fetch('http://localhost:8080/appointments/time_available', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify({
+              doctor_id:this.state.doctor_id,
+              date:this.state.current_date
+          })
+        })
+        .then(response => response.json())
+        .then(async ret => {
+          if (ret.status===true) {
+            if(ret.message!=undefined){
+            const temp=[];
+            ret.message.map((time)=>{temp.push(time.time)});
+             this.setState({disabledSlots:temp},()=>console.log(this.state.disabledSlots));
+            }
+          }
+        })
+        await this.setState({slotsOpen:true});
+
   }
  
     componentDidMount=()=>{
@@ -99,6 +121,21 @@ class BookSlot extends React.Component{
               this.setState({doctor_id:arr.doctor_id},()=>console.log('docid',this.state.doctor_id))
             }
         })
+        fetch('http://localhost:8080/appointments/date_available', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            doctor_id:this.state.doctor_id
+          })
+        })
+        .then(response => response.json())
+        .then(async (ret) => {
+          if (ret.status===true) {
+            if(ret.message.size>0){
+              alert('Sorry Doctor not avaialable');
+            }}
+         })
+        this.setState({openDates:true});
     }
     display=()=>{
       console.log(this.state.selectedSlot,' ',this.state.date)
@@ -107,6 +144,7 @@ class BookSlot extends React.Component{
       this.setState({selectedSlot:k},()=>{
         console.log(this.state.selectedSlot)
       })
+
     }
     bookAppointmentNow=()=>{
       console.log('entered')
@@ -116,16 +154,21 @@ class BookSlot extends React.Component{
           body:JSON.stringify({
               date:this.state.date,
               time:this.state.selectedSlot,
-              doctor_id:this.state.doctor_id
+              doctor_id:this.state.doctor_id,
+              patient_id:this.props.user.user_id
             })
         })
         .then(response => response.json())
         .then(async ret => {
           if (ret.status===true) {
                alert('Slot successfully Booked');
+               window.location.reload();
+
           }
           else{
-            console.log(ret);
+            alert('Please Login/Register First !')
+                           window.location.reload();
+
           }
         })
         console.log('exit')
@@ -134,24 +177,29 @@ class BookSlot extends React.Component{
     render(){
     return(
         <div >
-        <h1>SLOT BOOKING</h1>
-        <form style={{marginLeft:'20%',justifyContent:'center', width:'60%'}} method='GET'>
-            <div className="slot-book">
+        <h1>SLOT BOOKING </h1>
+        {(this.props.user.username)?(
+          <div>
+        <h2>Hi {this.props.user.username} !!!</h2>
+        <form  style={{marginLeft:'20%', width:'60%'}} method='GET'>
+          {/* <div className="slot-book">
         <label htmlFor="email">Email </label>
         : <input onChange={this.slotemailChange}
         type="email" placeholder="Enter Email" name="email"></input>
+        : <div className="holder">{this.props.user.email}</div>
         <br/><br/>
         <label htmlFor="name">Name </label>
         : <input onChange={this.slotnameChange}
         type="text" placeholder="Enter Full Name" name="patient-name"></input>
+        : <div className="holder">{this.props.user.username}</div>
         <br/><br/>
         <label htmlFor="phone">Contact Info </label>
         : <input onChange={this.slotphoneChange}
         type="phone" placeholder="Enter Contact No" name="contact"></input>
-        <br/>
+        : <div className="holder">{this.props.user.phone}</div>
+        <br/> */}
         <h3>⬇</h3>
         <div className="shift" >
-        {/* <label  htmlFor="dept">Select Department</label> */}
         <Dropdown 
         onChange={this.getDeptID} 
         options={a}
@@ -160,8 +208,6 @@ class BookSlot extends React.Component{
         className="myClassName"
         placeholder={`${this.state.dept}`} />
         <br/><br/>
-        {/* <label htmlFor="doc">Select Doctor</label><br/><br/> */}
-
         <Dropdown 
         options={doctorsArray}
         onChange={this.getDocID} 
@@ -172,26 +218,28 @@ class BookSlot extends React.Component{
         <br/>
         <h3>⬇</h3>
         </div>
-        </div>
         <div className='head'>
         <h3>Select a date to fix an appointment</h3>
-        <ModernDatepicker
+        {this.state.openDates&&<ModernDatepicker
           className="color"
           date={this.state.date}
           format={'YYYY-MM-DD'}
           showBorder
           onChange={date => this.onChange(date)}
           placeholder={'Select a date'}
-        />
+        />}
         <br/><br/>
         <h3>⬇</h3>
         <h3>Select a time slot</h3>
         {this.state.slotsOpen && 
         <TimeSlotsCalender 
-        upDate={this.upDate}/>}
+        upDate={this.upDate} disabledSlots={this.state.disabledSlots}/>}
         <button id="solo" type="button" onClick={this.bookAppointmentNow} >Book Slot</button>
         </div>
         </form>
+        </div>
+        ):
+        <h2 style={{"textDecoration":"underline"}}>Please Login First</h2>}
         </div>
     );}
     }

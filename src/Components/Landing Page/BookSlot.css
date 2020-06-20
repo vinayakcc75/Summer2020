@@ -4,7 +4,12 @@
     font-weight: bold;
     text-align: left;
 }
-
+.holder{
+    width:180px;
+    border:1px black solid;
+    justify-content: center;
+    margin-left:60%
+}
 #solo {
     background:coral;
     padding:3px;

@@ -14,7 +14,7 @@ class LoginPopup extends React.Component{
             user:{
                 password:"",
                 email:"",
-                username:"",
+                firstname:"",
                 user_id:"",
                 phone:"",
                 user_type:"",
@@ -55,14 +55,14 @@ class LoginPopup extends React.Component{
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         choice:this.state.choice,
-        choice_name:this.state.choice_name,
+        username:this.state.choice_name,
         password:this.state.user.password
       })
     })
     .then(response => response.json())
     .then(ret => {
         if(ret.status===true){
-            this.setState(Object.assign(this.state.user,{username:ret.results[0].username}));
+            this.setState(Object.assign(this.state.user,{firstname:ret.results[0].firstname}));
             this.setState(Object.assign(this.state.user,{user_id:ret.results[0].user_id}));
             this.setState(Object.assign(this.state.user,{phone:ret.results[0].phone}));
             this.setState(Object.assign(this.state.user,{user_type:ret.results[0].user_type}));
@@ -76,8 +76,7 @@ class LoginPopup extends React.Component{
             console.log('Successfully Login');
         } 
         else{
-          alert('Invalid Email or Password');
-          window.location.reload();
+          console.log(ret);
         }   
     })
     console.log('exit')

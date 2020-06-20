@@ -16,3 +16,6 @@
 .oneSlot input{
     margin:5px;
 }
+.disable:hover{
+    cursor:no-drop;
+}
