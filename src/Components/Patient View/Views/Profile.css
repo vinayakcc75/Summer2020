@@ -1,12 +1,15 @@
 .profile-main-wraper {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin-left: 20%;
+  margin: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 2%;
+  padding: 20px;
+  text-align: start;
+  border: 1px solid #000000;
 }
 
 .profile-main {
-  padding: 1%;
+  padding: 10px;
 }
 
 .profile-main img {
@@ -15,7 +18,20 @@
   border-radius: 75px;
 }
 
-.block-wraper {
+.centered {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+.profile-main button {
+  padding: 10px;
+  background-color: rgb(70, 153, 179);
+  color: white;
+  border: 1px solid rgb(70, 153, 179);
+  background-color: 250ms;
+}
+
+.profile-main button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(70, 153, 179);
 }

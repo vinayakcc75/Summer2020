@@ -1,51 +1,51 @@
 .valid-profile-wraper {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  text-align: start;
+  margin: 10px;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 2%;
   padding: 20px;
+  border: 1px solid #000000;
+  background-color: azure;
+  text-align: start;
 }
 
 .valid-profile {
-  width: 100%;
-}
-
-.valid-profile h1 {
-  text-align: center;
-}
-
-.valid-profile form {
-  width: 100%;
-  margin: 0 auto;
+  padding-right: 20px;
 }
 
 .valid-profile label {
-  height: 22px;
+  margin-bottom: 10px;
+}
+
+.input-style {
   width: 100%;
+}
+
+.input-gender {
+  margin-left: 25px;
+  margin-right: 50px;
 }
 
 .valid-profile input {
   padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #777;
-  width: 200px;
-}
-.input-style {
-  margin-bottom: 20px;
 }
 
-.label-style {
-  margin-bottom: 10px;
-}
 .valid-profile input.error {
   border-color: red;
 }
 
 .input-feedback {
   color: rgb(235, 54, 54);
-  margin-top: -5px;
   font-size: 14px;
+  margin-top: -10px;
+  margin-left: 10px;
   margin-bottom: 20px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
 }
 
 .valid-profile button {
@@ -60,9 +60,4 @@
   cursor: pointer;
   background-color: white;
   color: rgb(70, 153, 179);
-}
-
-.block {
-  display: flex;
-  justify-content: space-around;
 }
