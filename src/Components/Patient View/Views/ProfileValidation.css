@@ -14,6 +14,15 @@
   padding-right: 20px;
 }
 
+.div-name {
+  display: inline-block;
+  width: 45%;
+}
+
+.div-name-inner {
+  margin-left: 10%;
+}
+
 .valid-profile label {
   margin-bottom: 10px;
 }

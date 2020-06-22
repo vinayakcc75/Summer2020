@@ -45,45 +45,44 @@ class ProfileValidation extends React.Component {
                 } = props;
                 return (
                   <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label htmlFor="fname">First Name</label>
-                    <br />
-                    <br />
-                    <Field
-                      type="text"
-                      name="fname"
-                      value={values.fname}
-                      placeholder="Enter Your First Name"
-                      className={
-                        "input-style" ||
-                        (errors.fname && touched.fname && "error")
-                      }
-                    />
-                    <br />
-                    <br />
-
-                    {errors.fname && touched.fname && (
-                      <div className="input-feedback">{errors.fname}</div>
-                    )}
-
-                    <label htmlFor="lname">Last Name</label>
-                    <br />
-                    <br />
-                    <Field
-                      type="text"
-                      name="lname"
-                      value={values.lname}
-                      placeholder="Enter Your Last Name"
-                      className={
-                        "input-style" ||
-                        (errors.lname && touched.lname && "error")
-                      }
-                    />
-                    <br />
-                    <br />
-                    {errors.lname && touched.lname && (
-                      <div className="input-feedback">{errors.lname}</div>
-                    )}
-
+                    <div>
+                      <div className="div-name">
+                        <label htmlFor="fname">First Name</label>
+                        <br />
+                        <br />
+                        <Field
+                          type="text"
+                          name="fname"
+                          value={values.fname}
+                          placeholder="Enter Your First Name"
+                          contentEditable="true"
+                          className={errors.fname && touched.fname && "error"}
+                        />
+                        <br />
+                        <br />
+                        {errors.fname && touched.fname && (
+                          <div className="input-feedback">{errors.fname}</div>
+                        )}
+                      </div>
+                      <div className="div-name div-name-inner">
+                        <label htmlFor="lname">Last Name</label>
+                        <br />
+                        <br />
+                        <Field
+                          type="text"
+                          name="lname"
+                          value={values.lname}
+                          placeholder="Enter Your Last Name"
+                          contentEditable="true"
+                          className={errors.lname && touched.lname && "error"}
+                        />
+                        <br />
+                        <br />
+                        {errors.lname && touched.lname && (
+                          <div className="input-feedback">{errors.lname}</div>
+                        )}
+                      </div>
+                    </div>
                     <label htmlFor="male">Male</label>
 
                     <Field
