@@ -41,3 +41,9 @@
         font-size:13px;
     }
 }
+.profile-main-wraper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  

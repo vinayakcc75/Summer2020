@@ -1,6 +1,6 @@
 footer{
     /* margin-top:60vh;  */
-    background-color: rgb(37, 37, 37);
+    background-color: black;
     color:white;
     height:200px;
     position:absolute;
@@ -11,3 +11,16 @@ footer{
 .foot p{
     font-weight: bold;
 } 
+.icons{
+    position:absolute;
+    display:flex;
+    justify-content: center;
+    width:40%;
+}
+.icons {
+    width:100%;
+    justify-content: center;
+}
+.icons img{
+    margin:5px;
+}

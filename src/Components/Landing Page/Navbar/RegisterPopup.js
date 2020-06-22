@@ -89,8 +89,11 @@ class RegisterPopup extends React.Component{
       if(text==='male'){
       this.setState(Object.assign(this.state.user,{gender:'M'}),()=>console.log(this.state.gender));
       }
-      else{
+      else if(text==='female'){
       this.setState(Object.assign(this.state.user,{gender:'F'}),()=>console.log(this.state.gender));
+      }
+      else{
+        this.setState(Object.assign(this.state.user,{gender:'O'}),()=>console.log(this.state.gender));
       }
   }
     
@@ -169,11 +172,13 @@ class RegisterPopup extends React.Component{
                     <label htmlFor="female">Female</label>
                     <input type="radio" onClick={()=>this.genderChange('female')}
                     name="Gender" value="female" />
+                    <label htmlFor="others">Others</label>
+                    <input type="radio" onClick={()=>this.genderChange('other')}
+                    name="Gender" value="others" />
                     </div>
                     <br/>
                     <input type="text" placeholder="Enter Address"
                     onChange={this.addressChange}></input><br/><br/>
-                    <br/>
                     <input type="number" placeholder="Enter Age"
                     onChange={this.ageChange}></input><br/><br/>
                     <button type="button" onClick={this.submitF} >Register as Patient</button>
@@ -200,6 +205,9 @@ class RegisterPopup extends React.Component{
                     <label htmlFor="female">Female</label>
                     <input type="radio" onClick={()=>this.genderChange('female')}
                     name="Gender" value="female" />
+                     <label htmlFor="others">Others</label>
+                    <input type="radio" onClick={()=>this.genderChange('other')}
+                    name="Gender" value="others" />
                     </div>
                     <br/>
                     <input type="text" placeholder="Enter Address"

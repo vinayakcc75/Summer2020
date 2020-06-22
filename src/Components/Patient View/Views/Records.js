@@ -3,8 +3,7 @@ import './Records.css';
 import x from '../icons8-x-50.png';
 
 
-const arr=[{id:'kxy',val:'Bones'},{id:'jhgjh',val:'Heart'},{id:'fhgfhf',val:'Eyes'}];
-
+let arr=[];
 
 function  RecordDetails(props){
     
@@ -65,6 +64,28 @@ class Records extends React.Component{
         this.state={
             open:false,cur_data:'',
         }
+    }
+    componentDidMount(){
+        fetch('http://localhost:8080/medical_records', {
+          method: 'put',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            user_id:this.props.user.user_id
+          })
+        })
+        .then(response => response.json())
+        .then(async (ret) => {
+          if (ret.status===true) {
+            // this.docArr="";
+            // await(this.setState({docArr: ret.message}));
+            // doctorsArray=[];
+            // await(this.state.docArr.map((arr)=>{doctorsArray.push(arr.doctor)}))}
+            // this.setState({now:true})
+         }
+         else{
+             console.log(ret);
+         }
+     })
     }
     toggle=()=>{
         this.setState({open:!this.state.open});

@@ -3,6 +3,10 @@ import './AboutUs.css';
 import Swiper from 'swiper'
 import 'swiper/css/swiper.min.css'
 import doc from './OQ6UTW0.jpg';
+import fb from './footericons/icons8-facebook-48.png';
+import insta from './footericons/icons8-instagram-48.png';
+import twit from './footericons/icons8-twitter.svg';
+import './footer.css'
 const arr=[1,2,3,4,5,6,7,8,9,10];
 
 function Doctor(props){
@@ -110,21 +114,18 @@ class AboutUs extends React.Component{
         <History/>
         <People/>
         <AchievementSection/>
-        <footer style={{
-        "backgroundColor": "black",
-        "color":"white",
-        "height":"200px",
-        "position":"absolute",
-        "width":"100%",
-        "bottom":"0",
-        "left":"0"}} className="foot">
-            <p style={{ 'fontWeight': "bold"}}>CONTACT US</p>
+        <footer className="foot">
+        <h3>CONTACT US</h3>
             <p style={{ 'fontWeight': "bold"}} className="contactus">
                         Telephone : +21 2289373, +21 2341245<br/>
                         Email : hospital@gmail.com<br/>
                         Address : Delhi, India<br/>
             </p>
-            
+            <div className="icons">
+            <img alt="fb-icon" src={fb} width="30px" height="30px" />
+            <img alt="insta-icon" src={insta} width="30" height="30" />
+            <img alt="twit-icon" src={twit} width="30" height="30" />
+            </div>
         </footer>
       </div>
     );

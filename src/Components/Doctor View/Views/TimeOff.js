@@ -21,7 +21,7 @@ class TimeOff extends React.Component{
 {    return(
         <div className='time'>
             <br/>
-            <h1>Take Time off</h1><br/><br/><br/>
+            <h1>Request Time off</h1><br/><br/><br/>
             <label htmlFor="fromdate">From Date</label>
             : <input onChange={this.fromdateChange}
             type="date" placeholder="From date"></input><br/><br/><br/>

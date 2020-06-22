@@ -28,7 +28,7 @@ class PatientView extends React.Component{
                 <Switch>
                     <Route  path='/patient/:id' component={this.welcome}></Route>
         <Route  path='/profile' render={()=><Profile user={this.props.user}/>}></Route>
-                    <Route  path='/records' component={Records}></Route>
+        <Route  path='/records' render={()=><Records user={this.props.user}/>}></Route>
                 </Switch>
                 </Router>
             </div>

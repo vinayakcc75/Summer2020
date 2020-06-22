@@ -76,7 +76,7 @@ class LoginPopup extends React.Component{
             console.log('Successfully Login');
         } 
         else{
-          console.log(ret);
+          window.alert('Incorrect Username or Password !')
         }   
     })
     console.log('exit')

@@ -6,21 +6,28 @@ import Profile from './Views/Profile';
 import NewEntry from './Views/NewEntry';
 import TimeOff from './Views/TimeOff';
 import './DoctorView.css';
+import ViewAppointments from './Views/ViewAppointments';
 class DoctorView extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            baropen:false
+            baropen:false,
+            patientId:"",
+            patientName:""
         }
     }
     openBar=()=>{
         this.setState({baropen:!this.state.baropen})
     }
+    setpid=(a,b)=>{
+        this.setState({patientId:a});
+        this.setState({patientName:b});
+    }
     welcome=()=>{
         return(
         <div className="welcome">
             <br/><br/>
-        <h3>WELCOME Doctor!</h3>
+        <h3>WELCOME Doctor !</h3>
         </div>
     )}
     render(){
@@ -29,10 +36,12 @@ class DoctorView extends React.Component{
                 <Router>
                 <Sidebar openBar={this.openBar} baropen={this.state.baropen}/>
                 <Switch>
-                    <Route  path='/doctor/:id' component={this.welcome}></Route>
+                    <Route  path='/doctor/:id' render={()=><ViewAppointments setpid={this.setpid} user={this.props.user}/>}></Route>
                     <Route  path='/docprofile' render={()=><Profile user={this.props.user}/>}></Route>
                     <Route  path='/timeoff' component={TimeOff}></Route>
-                    <Route  path='/newentry' component={NewEntry}></Route>
+                    <Route  path='/newentry' render={()=><NewEntry patientId={this.state.patientId} 
+                     patientName={this.state.patientName}
+                     user={this.props.user}/>}></Route>
                     <Route  path='/patienthistory' component={PatientHistory}></Route>
                 </Switch>
                 </Router>

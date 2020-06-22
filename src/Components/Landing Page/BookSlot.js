@@ -6,7 +6,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './BookSlot.css';
 import ModernDatepicker from 'react-modern-datepicker';
-
+import {Link} from 'react-router-dom';
 //YYYY-MM-DD
 //HH:MI:SS
 let a=[];
@@ -52,7 +52,7 @@ class BookSlot extends React.Component{
         .then(response => response.json())
         .then(async ret => {
           if (ret.status===true) {
-            if(ret.message!=undefined){
+            if(ret.message!==undefined){
             const temp=[];
             ret.message.map((time)=>{temp.push(time.time)});
              this.setState({disabledSlots:temp},()=>console.log(this.state.disabledSlots));
@@ -131,11 +131,12 @@ class BookSlot extends React.Component{
         .then(response => response.json())
         .then(async (ret) => {
           if (ret.status===true) {
-            if(ret.message.size>0){
+            if(ret.message.length>0){
               alert('Sorry Doctor not avaialable');
+              window.location.reload();
             }}
+               this.setState({openDates:true});
          })
-        this.setState({openDates:true});
     }
     display=()=>{
       console.log(this.state.selectedSlot,' ',this.state.date)
@@ -239,7 +240,11 @@ class BookSlot extends React.Component{
         </form>
         </div>
         ):
-        <h2 style={{"textDecoration":"underline"}}>Please Login First</h2>}
+        <h2 style={{"textDecoration":"underline"}}>
+          <Link to='/'>
+          Please Login First
+          </Link>
+          </h2>}
         </div>
     );}
     }

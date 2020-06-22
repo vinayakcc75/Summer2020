@@ -25,11 +25,11 @@ class Sidebar extends React.Component{
                 <Link to='/docprofile'>
                     <button >Profile</button>
                 </Link>
+                <Link to='/doctor/:id'>
+                    <button >View Appointments</button>
+                </Link>
                 <Link to='/timeoff'>
                     <button >Time Off</button>
-                </Link>
-                <Link to='/newentry'>
-                    <button >New Entry</button>
                 </Link>
                 <Link to='/patienthistory'>
                     <button >Patient History</button>
@@ -43,11 +43,11 @@ class Sidebar extends React.Component{
                 <Link to='/docprofile'>
                     <button >Profile</button>
                 </Link>
+                <Link to='/doctor/:id'>
+                    <button >View Appointments</button>
+                </Link>
                 <Link to='/timeoff'>
                     <button >Time Off</button>
-                </Link>
-                <Link to='/newentry'>
-                    <button >New Entry</button>
                 </Link>
                 <Link to='/patienthistory'>
                     <button >Patient History</button>

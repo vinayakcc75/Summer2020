@@ -1,10 +1,12 @@
-.entry input{
+.entry textarea{
     width:20%;
     padding:5px;
-    height:auto;
-    background: transparent;
+    vertical-align: top;
+    height:80px;
+    background: white;
     border:solid 1px black;
-
+    resize:none;
+    overflow:scroll;
 }
 .entry label{
     display: inline-block;
@@ -22,9 +24,12 @@
 #bigip{
     height:40%;
 }
-.span{
+
+.wid{
     display:inline-block;
-    border:solid 1px black;
     width:20%;
     padding:5px;
+    border:1px solid black;
+    background-color: transparent;
+    justify-content: left;
 }

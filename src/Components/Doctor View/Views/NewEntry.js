@@ -9,12 +9,11 @@ const schema = yup.object().shape({
   prescription:yup.string()
 });
  
-// you can try and type cast objects to the defined schema
 
 
 class NewEntry extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             patientId:"",
             patientName:"",
@@ -35,8 +34,26 @@ class NewEntry extends React.Component{
         this.setState({prescription:event.target.value})
     }
     submit=()=>{
-        console.log(this.state.patientId," ",this.state.patientName);
-    }
+        fetch('http://localhost:8080/save_medical_records', {
+          method: 'post',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify({
+            user_id:this.state.patientId,
+            doctor_id:this.props.user.user_id,
+            symptoms:this.state.diagnosis,
+            prescribed:this.state.prescription
+          })
+        })
+        .then(response => response.json())
+        .then(async ret => {
+          if (ret.status===true){
+            alert('Record Saved !')
+        }
+        else{
+            alert('Enter Valid Patient ID !');        }
+        })
+  }
+    
     render(){
     return(
         <div className="entry">
@@ -45,16 +62,20 @@ class NewEntry extends React.Component{
          <form>
              <br/><br/>
              <label htmlFor="patient id">Patient Id</label>
-             : <input onChange={this.pidChange} type="number" ></input><br/><br/><br/>
+             : <div className="wid">{this.props.patientId}</div><br/><br/><br/>
 
              <label htmlFor="patient name">Patient Name</label>
-            : <input onChange={this.pnameChange} type="text" ></input><br/><br/><br/>
+            : <div className="wid">{this.props.patientName}</div><br/><br/><br/>
 
             <label htmlFor="diagnosis">Diagnosis</label>
-            : <span onChange={this.diagnosisChange} className="span"  contentEditable="true" /><br/><br/><br/>
+            : <textarea 
+            name="text" rows="14" cols="10" wrap="soft"
+            onChange={this.diagnosisChange} /><br/><br/><br/>
 
             <label htmlFor="prescription">Prescription</label> 
-            : <span onChange={this.presChange} className="span"  contentEditable="true" /><br/><br/><br/>
+            : <textarea 
+            name="text" rows="14" cols="10" wrap="soft"
+            onChange={this.presChange}/><br/><br/><br/>
             <button onClick={this.submit} type="button">Submit</button>
          </form>
         </div>
