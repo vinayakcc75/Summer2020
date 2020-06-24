@@ -24,10 +24,10 @@ class TimeOff extends React.Component{
             <h1>Request Time off</h1><br/><br/><br/>
             <label htmlFor="fromdate">From Date</label>
             : <input onChange={this.fromdateChange}
-            type="date" placeholder="From date"></input><br/><br/><br/>
+            type="date" placeholder="dd/mm/yyyy"></input><br/><br/><br/>
             <label htmlFor="todate">To Date</label>
             : <input onChange={this.todateChange}
-            type="date" placeholder="To date"></input><br/><br/><br/>
+            type="date" placeholder="dd/mm/yyyy"></input><br/><br/><br/>
             <button onClick={this.display}>Submit</button>
         </div>
     );}

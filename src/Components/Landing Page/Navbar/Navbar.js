@@ -17,7 +17,7 @@ const Navbar =({onRouteChange})=>{
                     <button >Facilities</button>
                 </Link>
                 <Link to='/bookslot'>
-                    <button >Book Slot Now!</button>
+                    <button >Book Appointment</button>
                 </Link>
                 <Link to='/login'>
                     <button onClick={()=>onRouteChange('login')} >Login</button>

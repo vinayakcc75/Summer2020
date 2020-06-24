@@ -3,7 +3,35 @@
     width:70%;
     justify-content: space-around;
     margin-left:25%;
-    border:1px solid black;
     padding:5px;
     margin-top:2px;
 }
+/* .box{
+    border:1px solid black
+} */
+.color.color {
+    width:20%;
+    background: transparent;
+    color:black;
+    text-shadow: none;
+     font-weight:bold;
+ }
+ .color{
+     width:20%;
+     margin-right:100%;
+     font-size:15px;
+     text-align: center;
+ }
+ .sc-bxivhb {
+     margin-left:40%;
+     margin-right:40%;
+ }
+ .dates{
+     font-size:2em;
+     font-weight: bold;
+ }
+ .cal{
+     font-weight:bold;
+     display:inline;
+     margin-left:10%
+ }
