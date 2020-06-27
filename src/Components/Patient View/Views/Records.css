@@ -2,9 +2,8 @@
     width: 78%;
     margin-left: 20%;
     padding: 1%;
-    border: 1px solid #000000;
 }
-.recordd{
+.record{
     border: 1px solid #000000;
     padding:1%;
     margin: 0.5%;
@@ -18,13 +17,11 @@
 
 .doctor-box{
     display: inline-block;
-    border: 1px solid #000000; 
     padding: 1%;
 } 
 
 .date-box{
     display: inline-block;
-    border: 1px solid #000000;
     padding:1%;
     margin-left: 80%;
 }

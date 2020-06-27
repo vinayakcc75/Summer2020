@@ -9,6 +9,7 @@ h1{
 .aboutus{
   margin-top: 12vh;
   color:black;
+  padding: 10px;
 }
 .aboutus h4{
   text-shadow: 2px 2px  white
@@ -23,7 +24,7 @@ h1{
   color:black
 }
 
-.card:hover{
+.aboutUs-card:hover{
   transform: scale(1.05);
 }
 
@@ -31,4 +32,17 @@ h1{
   .aboutus{
     font-size:12px;
   }
+}
+
+.aboutUs-card img{
+  width: 300px;
+  height:200px;
+}
+
+.people-main{
+  display:inline-block;
+}
+
+.people-wraper{
+  text-align: center;
 }

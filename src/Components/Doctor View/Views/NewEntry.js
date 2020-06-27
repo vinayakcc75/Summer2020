@@ -81,5 +81,4 @@ class NewEntry extends React.Component{
         </div>
     );}
 }
- export default NewEntry; 
- 
+export default NewEntry;

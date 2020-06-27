@@ -1,10 +1,11 @@
-.pat-profile{
-    display:flex;
-    justify-content: center;
-    width: 80%;
-    margin-left: 20%;
-    margin-right:20%;
-    text-align: center;
+.profile-main-wraper {
+  margin: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 2%;
+  padding: 20px;
+  text-align: start;
+  border: 1px solid #000000;
 }
 .pat-profile table {
     width:50%;
@@ -14,32 +15,29 @@
     border-radius: 2%;
     box-shadow:0vh 0vh 1vh 1vh grey;
 }
-.pat-profile img{
-    margin-left:65%;
-    width: 100px;
-    height: 100px;
-    border-radius: 75px;
+
+.profile-main img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
 }
-.pat-profile button{
-    background-color: transparent;
-    color:black;
-    padding:5px;
-    border:2px double black;
-    font-weight: bold;
-    margin:10px;
-    width:140px;
-    margin-left:60%;
+
+.centered {
+  display: flex;
+  justify-content: center;
 }
-.pat-profile button:hover{
-    transition: 0.2s;
-    transform: scale(1.05);
-    font:15px;
-    cursor:pointer
+.profile-main button {
+  padding: 10px;
+  background-color: rgb(70, 153, 179);
+  color: white;
+  border: 1px solid rgb(70, 153, 179);
+  background-color: 250ms;
 }
-@media (max-width:786px){
-    .pat-profile table{
-        font-size:13px;
-    }
+
+.profile-main button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(70, 153, 179);
 }
 .profile-main-wraper {
     display: flex;

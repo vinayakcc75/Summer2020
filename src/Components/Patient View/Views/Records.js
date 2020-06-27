@@ -8,7 +8,7 @@ let arr=[];
 function  RecordDetails(props){
     
     return(
-        <div className="recordd">
+        <div className="record">
             <img src={x} alt="close" onClick={props.onClick} className="go-back" width='40' height='40'/>
             <div className="dd-box"> 
                 <div className="doctor-box">
