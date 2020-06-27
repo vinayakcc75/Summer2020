@@ -5,12 +5,12 @@ import ModernDatepicker from 'react-modern-datepicker';
 
 let a=[
     {
-    patientid:'1',
+    dept:'Cardiology',
     patientName:"Ram",
     timing:'09:00 am'
     },
     {
-        patientid:'2',
+        dept:'Critical Care',
         patientName:"Kyle",
         timing:'09:30 am'
     }
@@ -29,15 +29,10 @@ class ViewAppointments extends React.Component{
     appointments=(a)=>{
         return(
             <div className="individual-appoint">
-                <div className="app-details">
-                <div>{a.patientid} </div>
+                <div className="details">
+                <div>{a.dept}</div>
                 <div>{a.patientName}</div>
                 <div>{a.timing}</div>
-                <div>
-                    <Link to='/newentry'>
-                       <button onClick={()=>{this.somethings(a.patientid,a.patientName)}}>New</button>
-                    </Link>
-                </div>
                 </div>
             </div>
         )
@@ -82,13 +77,10 @@ class ViewAppointments extends React.Component{
                         />
                         </div>
                         <br/><br/>
-                <div style={{"fontWeight":"bold"}} className="app-details">
-                <div>Patient ID</div>
-                <div>Patient Name</div>
+                <div style={{"fontWeight":"bold"}} className="details">
+                <div>Department</div>
+                <div>Doctor Name</div>
                 <div>Appointment Time</div>
-                <div>
-                    Add Prescription
-                </div>
                 </div>
                 <br/>
                 {a.map((a)=>this.appointments(a))}

@@ -23,13 +23,6 @@ class DoctorView extends React.Component{
         this.setState({patientId:a});
         this.setState({patientName:b});
     }
-    welcome=()=>{
-        return(
-        <div className="welcome">
-            <br/><br/>
-        <h3>WELCOME Doctor !</h3>
-        </div>
-    )}
     render(){
         return(
             <div>

@@ -67,7 +67,6 @@ class LoginPopup extends React.Component{
             this.setState(Object.assign(this.state.user,{phone:ret.results[0].phone}));
             this.setState(Object.assign(this.state.user,{user_type:ret.results[0].user_type}));
             this.props.loadUser(this.state.user);
-            console.log(this.state.user);
             this.props.giveAccess();
             if(ret.results[0].user_type===0)
                 this.props.history.push(`/patient/${this.state.user_id}`);
