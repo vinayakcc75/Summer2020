@@ -108,6 +108,19 @@ class ProfileValidation extends React.Component {
                       }
                       defaultChecked={values.gender === "Female"}
                     />
+
+                    <label htmlFor="others">Others</label>
+
+                    <Field
+                      type="radio"
+                      name="gender"
+                      value="Others"
+                      className={
+                        "input-gender" ||
+                        (errors.gender && touched.gender && "error")
+                      }
+                      defaultChecked={values.gender === "Others"}
+                    />
                     <br />
                     <br />
                     <label htmlFor="dob">Date of Birth</label>
