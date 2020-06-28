@@ -1,79 +1,78 @@
-.med-hist{
-    width: 78%;
-    margin-left: 20%;
-    padding: 1%;
+.med-hist {
+  width: 78%;
+  margin-left: 20%;
+  padding: 1%;
 }
-.record{
-    border: 1px solid #000000;
-    padding:1%;
-    margin: 0.5%;
-    margin-left: 20%;
+.record {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.5%;
+  margin-left: 20%;
 }
-.dd-box{
-    border: 1px solid #000000;
-    padding: 1%;
-    margin: 0.5%;
-}
-
-.doctor-box{
-    display: inline-block;
-    padding: 1%;
-} 
-
-.date-box{
-    display: inline-block;
-    padding:1%;
-    margin-left: 80%;
+.dd-box {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.5%;
 }
 
-.problem{
-    border: 1px solid #000000;
-    padding: 1%;
-    margin: 0.5%;
+.doctor-box {
+  display: inline-block;
+  padding: 1%;
 }
 
-.medication{
-    border: 1px solid #000000;
-    padding: 1%;
-    margin: 0.5%;
+.date-box {
+  display: inline-block;
+  padding: 1%;
+  margin-left: 80%;
 }
 
-.care{
-    border: 1px solid #000000;
-    padding: 1%;
-    margin: 0.5%;
+.problem {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.5%;
 }
 
-.filter{
-    padding: 1%;
-    border: 1px solid #000000;
-    margin: 0.25%;
+.medication {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.5%;
 }
 
-.simple-record{
-    border: 1px solid #000000;
-    padding: 1%;
-    margin: 0.25%;
+.care {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.5%;
 }
 
-.text-style{
-    text-decoration: none;
-    color:black;
-}
-.dept{
-    float: left;
-    padding: 0.5%;;
-}
-.heading{
-    display:inline-block;
-    padding: 0.5%;
-}
-.date{
-    float: right;
-    padding: 0.5%;
+.filter {
+  padding: 1%;
+  border: 1px solid #000000;
+  margin: 0.25%;
 }
 
-.go-back{
-   float: right;
-   
+.simple-record {
+  border: 1px solid #000000;
+  padding: 1%;
+  margin: 0.25%;
+}
+
+.text-style {
+  text-decoration: none;
+  color: black;
+}
+.dept {
+  float: left;
+  padding: 0.5%;
+}
+.heading {
+  display: inline-block;
+  padding: 0.5%;
+}
+.date {
+  float: right;
+  padding: 0.5%;
+}
+
+.go-back {
+  float: right;
 }
