@@ -7,11 +7,10 @@ import fb from "./footericons/icons8-facebook-48.png";
 import insta from "./footericons/icons8-instagram-48.png";
 import twit from "./footericons/icons8-twitter.svg";
 import "./footer.css";
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function Doctor(props) {
   return (
-    <div className="aboutUs-card">
+    <div className="aboutUs card">
       <img src={props.image} width="80" height="80" alt="Doctor's pic" />
       <br />
       <h2>{props.name}</h2>
@@ -51,13 +50,58 @@ class People extends React.Component {
   }
 }
 
+function History() {
+  return (
+    <div>
+      <h1>ABOUT US</h1>
+      <h3>
+        A hospital is a place where a person goes to be healed when he or she is
+        sick or injured. Doctors and nurses work at hospitals. Doctors make use
+        of advanced medical technology to heal patients. The hospital may charge
+        money for treatments checkups or the treatment may be free or the money
+        will be paid by the government on behalf of the patient.
+      </h3>
+    </div>
+  );
+}
+
+class AboutUs extends React.Component {
+  render() {
+    return (
+      <div className="aboutus">
+        <History />
+        <hr />
+        <People />
+        <footer className="foot">
+          <h3>CONTACT US</h3>
+          <p style={{ fontWeight: "bold" }} className="contactus">
+            Telephone : +21 2289373, +21 2341245
+            <br />
+            Email : hospital@gmail.com
+            <br />
+            Address : Delhi, India
+            <br />
+          </p>
+          <div className="icons">
+            <img alt="fb-icon" src={fb} width="30px" height="30px" />
+            <img alt="insta-icon" src={insta} width="30" height="30" />
+            <img alt="twit-icon" src={twit} width="30" height="30" />
+          </div>
+        </footer>
+      </div>
+    );
+  }
+}
+
+export default AboutUs;
+
+/*
 function Achievement(props) {
   return (
     <div className="card swiper-slide">
       <img src={doc} width="80" height="80" alt="Conent" />
       <h4>{props.heading}</h4>
       <h4>{props.link}</h4>
-      {/* <a href="#">{props.link}</a> */}
     </div>
   );
 }
@@ -92,49 +136,4 @@ class AchievementSection extends React.Component {
     );
   }
 }
-
-function History() {
-  return (
-    <div>
-      <h1>ABOUT US</h1>
-      <h3>
-        A hospital is a place where a person goes to be healed when he or she is
-        sick or injured. Doctors and nurses work at hospitals. Doctors make use
-        of advanced medical technology to heal patients. The hospital may charge
-        money for treatments checkups or the treatment may be free or the money
-        will be paid by the government on behalf of the patient.
-      </h3>
-    </div>
-  );
-}
-
-class AboutUs extends React.Component {
-  render() {
-    return (
-      <div className="aboutus">
-        <History />
-        <hr />
-        <People />
-        <AchievementSection />
-        <footer className="foot">
-          <h3>CONTACT US</h3>
-          <p style={{ fontWeight: "bold" }} className="contactus">
-            Telephone : +21 2289373, +21 2341245
-            <br />
-            Email : hospital@gmail.com
-            <br />
-            Address : Delhi, India
-            <br />
-          </p>
-          <div className="icons">
-            <img alt="fb-icon" src={fb} width="30px" height="30px" />
-            <img alt="insta-icon" src={insta} width="30" height="30" />
-            <img alt="twit-icon" src={twit} width="30" height="30" />
-          </div>
-        </footer>
-      </div>
-    );
-  }
-}
-
-export default AboutUs;
+*/

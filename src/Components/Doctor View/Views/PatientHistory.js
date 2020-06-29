@@ -1,6 +1,8 @@
 import React from "react";
 import "./PatientHistory.css";
-import SimpleRecord from "../../Patient View/Views/SimpleRecord";
+import RecordsList from "./RecordsList";
+
+const arr = ["Cardilogy", "Gynaecology", "General"];
 
 class PatientHistory extends React.Component {
   constructor(props) {
@@ -18,10 +20,13 @@ class PatientHistory extends React.Component {
 
   render() {
     return (
-      <div className="patient-history-wraper">
-        <div className="patient-history">
-          <div className="patient-history-search">
-            <div className="centered">
+      <div className="patient-history">
+        <div className="centered">
+          <h1>Patient History</h1>
+        </div>
+        <div className="patient-history-search">
+          <div className="centered">
+            <div>
               <input
                 type="text"
                 name="pat_id"
@@ -32,9 +37,9 @@ class PatientHistory extends React.Component {
               <button onClick={this.handleSearch.bind(this)}>Search</button>
             </div>
           </div>
-          <div>
-            <SimpleRecord />
-          </div>
+        </div>
+        <div>
+          <RecordsList data={arr} />
         </div>
       </div>
     );
