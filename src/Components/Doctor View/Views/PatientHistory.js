@@ -14,7 +14,11 @@ class PatientHistory extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  toggle() {
+    this.setState({ open: !this.state.open });
+  }
   handleSearch(e) {
+    //fetch data from api with the user id corresponding to pat_id
     console.log(this.state.pat_id);
   }
 
@@ -24,20 +28,22 @@ class PatientHistory extends React.Component {
         <div className="centered">
           <h1>Patient History</h1>
         </div>
-        <div className="patient-history-search">
-          <div className="centered">
-            <div>
-              <input
-                type="text"
-                name="pat_id"
-                value={this.state.pat_id}
-                placeholder="Enter Patient Id"
-                onChange={this.handleChange.bind(this)}
-              />
-              <button onClick={this.handleSearch.bind(this)}>Search</button>
+        {
+          <div className="patient-history-search">
+            <div className="centered">
+              <div>
+                <input
+                  type="text"
+                  name="pat_id"
+                  value={this.state.pat_id}
+                  placeholder="Enter Patient Id"
+                  onChange={this.handleChange.bind(this)}
+                />
+                <button onClick={this.handleSearch.bind(this)}>Search</button>
+              </div>
             </div>
           </div>
-        </div>
+        }
         <div>
           <RecordsList data={arr} />
         </div>
