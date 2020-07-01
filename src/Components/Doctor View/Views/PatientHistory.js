@@ -9,19 +9,13 @@ class PatientHistory extends React.Component {
     super(props);
     this.state = { pat_id: "" };
   }
-
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
-
-  toggle() {
-    this.setState({ open: !this.state.open });
   }
   handleSearch(e) {
     //fetch data from api with the user id corresponding to pat_id
     console.log(this.state.pat_id);
   }
-
   render() {
     return (
       <div className="patient-history">
