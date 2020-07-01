@@ -1,48 +1,42 @@
-h1{
-   text-align : center;
-   font-weight: bold;
-   text-shadow: 2px 1.5px   pink
- }
- body{
-   height:auto;
- }
-.aboutus{
+h1 {
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 2px 1.5px pink;
+}
+body {
+  height: auto;
+}
+.aboutus {
   margin-top: 12vh;
-  color:black;
+  color: black;
   padding: 10px;
 }
-.aboutus h4{
-  text-shadow: 2px 2px  white
+.aboutus h4 {
+  text-shadow: 2px 2px white;
 }
-.card{
-  background-color:whitesmoke;
-  padding:1%;
-  margin:10px;
-  box-shadow:0px 0px 2px 2px black;
+.card {
+  background-color: azure;
+  padding: 10px;
+  margin: 10px;
   border-radius: 10px;
-  transition:.5s;
-  color:black
+  border: 1px solid #000000;
+  width: 300px;
+  height: 250px;
 }
 
-.aboutUs-card:hover{
+.card:hover {
   transform: scale(1.05);
 }
 
-@media(max-width:768px){
-  .aboutus{
-    font-size:12px;
-  }
+.card img {
+  width: 200px;
+  height: 150px;
 }
 
-.aboutUs-card img{
-  width: 300px;
-  height:200px;
+.people-main {
+  display: inline-block;
 }
 
-.people-main{
-  display:inline-block;
-}
-
-.people-wraper{
+.people-wraper {
   text-align: center;
 }

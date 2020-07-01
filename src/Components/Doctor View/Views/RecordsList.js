@@ -1,8 +1,6 @@
 import React from "react";
-import "./Records.css";
+import "./RecordsList.css";
 import x from "../icons8-x-50.png";
-
-let arr = [];
 
 function RecordDetails(props) {
   return (
@@ -29,7 +27,7 @@ function RecordDetails(props) {
         <div className="problem">
           <h4>Problem</h4>
           <p>Description Of Problem</p>
-          <h6>{props.data.val}</h6>
+          <h6>{props.data}</h6>
         </div>
         <div className="medication">
           <h4>Medication</h4>
@@ -48,9 +46,9 @@ function SimpleRecord(props) {
   return (
     <div className="simple-record">
       <div className="dept">
-        <h3>{props.data.val}</h3>
+        <h3>{props.data}</h3>
       </div>
-      <div className="heading">
+      <div className="simple-heading">
         <h4>Simple Descriton of Problem </h4>
       </div>
       <div className="date">
@@ -60,34 +58,10 @@ function SimpleRecord(props) {
   );
 }
 
-class Records extends React.Component {
+class RecordsList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: false,
-      cur_data: "",
-    };
-  }
-  componentDidMount() {
-    fetch("http://localhost:8080/medical_records", {
-      method: "put",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: this.props.user.user_id,
-      }),
-    })
-      .then((response) => response.json())
-      .then(async (ret) => {
-        if (ret.status === true) {
-          // this.docArr="";
-          // await(this.setState({docArr: ret.message}));
-          // doctorsArray=[];
-          // await(this.state.docArr.map((arr)=>{doctorsArray.push(arr.doctor)}))}
-          // this.setState({now:true})
-        } else {
-          console.log(ret);
-        }
-      });
+    this.state = { open: false, cur_data: {} };
   }
   toggle = () => {
     this.setState({ open: !this.state.open });
@@ -96,6 +70,7 @@ class Records extends React.Component {
     this.toggle();
     this.setState({ cur_data: data });
   }
+
   render() {
     return (
       <div>
@@ -109,32 +84,26 @@ class Records extends React.Component {
             />
           )}
         </div>
-        {this.state.open === false && (
-          <div className="med-hist">
-            <h1>Your Medical History</h1>
-            <div>
-              <div className="filter">
-                <h3>Filter section</h3>
-              </div>
-              <div className="text-style">
-                {arr.map((d, i) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        this.handleClick(d);
-                      }}
-                      key={d.id}
-                    >
-                      <SimpleRecord data={d} />
-                    </div>
-                  );
-                })}
-              </div>
+        <div>
+          {this.state.open === false && (
+            <div className="text-style">
+              {this.props.data.map((d, i) => {
+                return (
+                  <div
+                    onClick={() => {
+                      this.handleClick(d);
+                    }}
+                    key={d}
+                  >
+                    <SimpleRecord data={d} />
+                  </div>
+                );
+              })}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }
 }
-export default Records;
+export default RecordsList;

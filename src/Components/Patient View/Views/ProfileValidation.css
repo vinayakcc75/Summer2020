@@ -1,6 +1,5 @@
 .valid-profile-wraper {
   margin: 10px;
-  margin-top: 10px;
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 2%;
@@ -14,29 +13,26 @@
   padding-right: 20px;
 }
 
-.div-name {
-  display: inline-block;
-  width: 45%;
-}
-
-.div-name-inner {
-  margin-left: 10%;
-}
-
 .valid-profile label {
-  margin-bottom: 10px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
-
 .input-style {
   width: 100%;
 }
 
 .input-gender {
-  margin-left: 30px;
-  margin-right: 100px;
+  margin-left: 20px;
+  margin-right: 30px;
 }
 
+.div-name {
+  display: inline-block;
+  width: 45%;
+}
+.div-name-inner {
+  margin-left: 10%;
+}
 .valid-profile input {
   padding: 10px;
 }
