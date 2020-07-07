@@ -67,11 +67,9 @@ class ProfileValidation extends React.Component {
               initialValues={this.state}
               onSubmit={(values, { setSubmitting }, cb = this.props.toggle) => {
                 setSubmitting(true);
-                setTimeout(() => {
-                  console.log("Saved ", values);
-                }, 500);
+                console.log("Saved ", values);
                 //Connecting to Backend
-                this.submit();
+                //this.submit();
                 cb(values);
                 setSubmitting(false);
               }}
@@ -227,6 +225,8 @@ class ProfileValidation extends React.Component {
                         (errors.department && touched.department && "error")
                       }
                     />
+                    <br />
+                    <br />
                     {errors.department && touched.department && (
                       <div className="input-feedback">{errors.department}</div>
                     )}
@@ -244,6 +244,8 @@ class ProfileValidation extends React.Component {
                           "error")
                       }
                     />
+                    <br />
+                    <br />
                     {errors.qualification && touched.qualification && (
                       <div className="input-feedback">
                         {errors.qualification}
@@ -263,6 +265,8 @@ class ProfileValidation extends React.Component {
                           "error")
                       }
                     />
+                    <br />
+                    <br />
                     {errors.specialization && touched.specialization && (
                       <div className="input-feedback">
                         {errors.specialization}
