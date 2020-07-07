@@ -9,23 +9,13 @@ const schema = yup.object().shape({
   prescription:yup.string()
 });
  
-
-
 class NewEntry extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            patientId:"",
-            patientName:"",
             diagnosis:"",
             prescription:""
         }
-    }
-    pidChange=(event)=>{
-        this.setState({patientId:event.target.value})
-    }
-    pnameChange=(event)=>{
-        this.setState({patientName:event.target.value})
     }
     diagnosisChange=(event)=>{
         this.setState({diagnosis:event.target.value})
@@ -34,11 +24,11 @@ class NewEntry extends React.Component{
         this.setState({prescription:event.target.value})
     }
     submit=()=>{
-        fetch('http://localhost:8080/save_medical_records', {
+        fetch(`/api/save_medical_records`, {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify({
-            user_id:this.state.patientId,
+            user_id:this.props.patientId,
             doctor_id:this.props.user.user_id,
             symptoms:this.state.diagnosis,
             prescribed:this.state.prescription
@@ -47,6 +37,7 @@ class NewEntry extends React.Component{
         .then(response => response.json())
         .then(async ret => {
           if (ret.status===true){
+              console.log(ret,this.state);
             alert('Record Saved !')
         }
         else{

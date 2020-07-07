@@ -54,7 +54,7 @@ class LoginPopup extends React.Component{
     
      verify=()=>{
     console.log('entered');
-    fetch('http://localhost:8080/authenticate', {
+    fetch(`/api/authenticate`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -65,9 +65,14 @@ class LoginPopup extends React.Component{
     })
     .then(response => response.json())
     .then(ret => {
+      console.log(ret);
         if(ret.status===true){
             this.setState(Object.assign(this.state.user,{firstname:ret.results[0].firstname}));
+            // if(ret.results[0].user_type===0)
             this.setState(Object.assign(this.state.user,{user_id:ret.results[0].user_id}));
+            // else{
+            //   this.setState(Object.assign(this.state.user,{user_id:ret.resultsd[0].doctor_id}));
+            // }
             this.setState(Object.assign(this.state.user,{phone:ret.results[0].phone}));
             this.setState(Object.assign(this.state.user,{user_type:ret.results[0].user_type}));
             this.props.loadUser(this.state.user);
