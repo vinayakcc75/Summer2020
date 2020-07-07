@@ -3,66 +3,56 @@ import './ViewAppointments.css';
 import {Link} from 'react-router-dom';
 import ModernDatepicker from 'react-modern-datepicker';
 
-let a=[
-    {
-    patientid:'1',
-    patientName:"Ram",
-    timing:'09:00 am'
-    },
-    {
-        patientid:'2',
-        patientName:"Kyle",
-        timing:'09:30 am'
-    }
-]
 
 class ViewAppointments extends React.Component{
     constructor(){
         super();
         this.state={
-            date:new Date()
+            date:"",
+            a:[],
+            dateSelected:false
         }
     }
-    somethings=(a,b)=>{
-        this.props.setpid(a,b);
+    somethings=(a,b,c)=>{
+        this.props.setpid(a,b,c);
     }
     appointments=(a)=>{
         return(
             <div className="individual-appoint">
                 <div className="app-details">
-                <div>{a.patientid} </div>
-                <div>{a.patientName}</div>
-                <div>{a.timing}</div>
+                <div>{a.patient_id} </div>
+                <div>{a.firstname} {a.lastname}</div>
+                <div>{a.time}</div>
                 <div>
                     <Link to='/newentry'>
-                       <button onClick={()=>{this.somethings(a.patientid,a.patientName)}}>New</button>
+                       <button onClick={()=>{this.somethings(a.patient_id,a.firstname,a.lastname)}}>New</button>
                     </Link>
                 </div>
                 </div>
             </div>
         )
     }
-    handleChange = date => {
-        this.setState({
-          date: date
-        });
-      };
     onChange=async (d)=>{
         await this.setState({date:d})
-        fetch('http://localhost:8080/patient', {
+        fetch(`/api/doctor`, {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify({
-              user_id_ref:this.props.user.user_id,
+              user_id:this.props.user.user_id,
               date:this.state.date
             })
         })
         .then(response => response.json())
         .then(async ret => {
-               console.log(ret,this.props.user.user_id,this.state.date);
-          
+            console.log(ret)
+
+            if(ret.status===true){
+            await this.setState({a:ret.message})
+            await this.setState({dateSelected:true})
+            }
         })
         console.log('exit')
+
     }
     render(){
         return(
@@ -82,7 +72,7 @@ class ViewAppointments extends React.Component{
                         />
                         </div>
                         <br/><br/>
-                <div style={{"fontWeight":"bold"}} className="app-details">
+                <div style={{"fontWeight":"bold"}} className="app-first">
                 <div>Patient ID</div>
                 <div>Patient Name</div>
                 <div>Appointment Time</div>
@@ -91,7 +81,11 @@ class ViewAppointments extends React.Component{
                 </div>
                 </div>
                 <br/>
-                {a.map((a)=>this.appointments(a))}
+                {(this.state.dateSelected)?(
+                (this.state.a.length>0)?
+                (this.state.a.map((a)=>this.appointments(a)))
+                :(<h4 style={{"marginLeft":"15%"}}>No appointments</h4>))
+                :<h4 style={{"marginLeft":"15%"}} >Select a date</h4>}
             </div>
         )
     }

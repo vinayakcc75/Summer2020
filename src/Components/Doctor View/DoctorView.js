@@ -19,9 +19,9 @@ class DoctorView extends React.Component{
     openBar=()=>{
         this.setState({baropen:!this.state.baropen})
     }
-    setpid=(a,b)=>{
+    setpid=(a,b,c)=>{
         this.setState({patientId:a});
-        this.setState({patientName:b});
+        this.setState({patientName:b+' '+c});
     }
     render(){
         return(

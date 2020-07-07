@@ -1,49 +1,61 @@
 .valid-profile-wraper {
+  margin: 10px;
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 2%;
   padding: 20px;
+  border: 1px solid #000000;
+  background-color: azure;
+  text-align: start;
 }
 
 .valid-profile {
-  width: 60%;
-  margin-left:20%;
+  padding-right: 20px;
 }
 
-.valid-profile h1 {
-  text-align: center;
+.div-name {
+  display: inline-block;
+  width: 45%;
 }
 
-.valid-profile form {
-  width: 100%;
-  margin: 0 ;
+.div-name-inner {
+  margin-left: 10%;
 }
 
 .valid-profile label {
-  height: 22px;
-  display: inline-block;
-  width: 60%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.input-style {
+  width: 100%;
+}
+
+.input-gender {
+  margin-left: 25px;
+  margin-right: 50px;
 }
 
 .valid-profile input {
   padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #777;
-  width: 200px;
-}
-.input-style {
-  margin-bottom: 20px;
 }
 
-.label-style {
-  margin-bottom: 10px;
-}
 .valid-profile input.error {
   border-color: red;
 }
 
 .input-feedback {
   color: rgb(235, 54, 54);
-  margin-top: -5px;
   font-size: 14px;
+  margin-top: -10px;
+  margin-left: 10px;
   margin-bottom: 20px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
 }
 
 .valid-profile button {
@@ -58,16 +70,4 @@
   cursor: pointer;
   background-color: white;
   color: rgb(70, 153, 179);
-}
-
-.block {
-  justify-content: space-around;
-}
-
-.gender label{
-  width:30%;
-  margin-left:90px
-}
-.gender input{
-  margin-left:-20%;
 }
