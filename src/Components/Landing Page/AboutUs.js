@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutUs.css";
-import Swiper from "swiper";
+//import Swiper from "swiper";
 import "swiper/css/swiper.min.css";
 import doc from "./OQ6UTW0.jpg";
 import fb from "./footericons/icons8-facebook-48.png";

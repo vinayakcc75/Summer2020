@@ -1,14 +1,11 @@
 import React from "react";
 import "./Records.css";
-import x from "../icons8-x-50.png";
+//import x from "../icons8-x-50.png";
 import RecordDetails from "./../../Doctor View/Views/RecordsList";
 
 const arr = ["Cardilogy", "Gynaecology", "General"];
 
 class Records extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     fetch("http://localhost:8080/medical_records", {
       method: "put",
