@@ -1,11 +1,9 @@
 body {
-  /* background: linear-gradient(to left, transparent 0%,cyan 50%,transparent 100%);
-  background: -moz-linear-gradient(to left, transparent 0%,cyan 50%,transparent 100%);
-  background: -webkit-gradient(to left, transparent 0%,cyan 50%,transparent 100%); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-top:100px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif; 
+  background: linear-gradient(to right,rgb(31, 185, 236),pink);
 }
 html{
   height:100%;

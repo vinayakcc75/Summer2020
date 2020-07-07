@@ -4,6 +4,18 @@ import './Sidebar.css';
 import x from './icons8-x-50.png'
 import logout from './4115235-exit-logout-sign-out_114030.svg'
 class Sidebar extends React.Component{
+    constructor(){
+        super();
+    }
+    logout=()=>{
+        fetch(`/api/logout`,{
+            method:'get',
+            headers: {'Content-Type': 'application/json'}
+        }).then(response=>response.json())
+        .then(ret=>{
+            console.log('Logged Out !');
+        })
+    }
     render(){
         const {openBar} =this.props;
         return(
@@ -15,7 +27,7 @@ class Sidebar extends React.Component{
             </button>
             </div>
 
-            <a className="homepic" href="/">
+            <a className="homepic" onClick={this.logout} href="/">
                 <img src={logout} alt="home-icon" height='40' width='40'></img>
             </a>
             {(this.props.baropen===true)?(

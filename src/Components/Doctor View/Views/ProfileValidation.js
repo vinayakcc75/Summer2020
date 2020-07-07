@@ -1,201 +1,238 @@
 import * as Yup from "yup";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import React from "react";
 import "./ProfileValidation.css";
 
 class ProfileValidation extends React.Component {
-  componentDidMount() {
-    console.log(this.props);
+  constructor(){
+    super();
+    this.state={
+        fname: "John",
+        lname: "Abraham",
+        age: 25,
+        gender: "Male",
+        dob: "dd-mm-yyyy",
+        email: "john@gmail.com",
+        patId: "111100",
+        address: "Format",
+        department:"",
+        qualification:"",
+        specialization:""
+    }
   }
-
+  emailChange=(event)=>{
+    this.setState({email:event.target.value});
+  }
+  firstNameChange=(event)=>{
+    this.setState({fname:event.target.value});
+  }
+  lastNameChange=(event)=>{
+    this.setState({lname:event.target.value});
+  }
+  dobChange=(event)=>{
+    this.setState({fname:event.target.value});
+  }
+  genderChange=(x)=>{
+      this.setState({gender:x});
+  }
+  addressChange=(event)=>{
+    this.setState({address:event.target.value});
+  }
+  submit=()=>{
+    fetch(`/profile/save_edit`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify({
+        user_id:this.props.patientId,
+        doctor_id:this.props.user.user_id,
+        symptoms:this.state.diagnosis,
+        prescribed:this.state.prescription
+      })
+    })
+    .then(response => response.json())
+    .then(async ret => {
+      console.log(this.state)
+    })
+}
   render() {
     return (
-      <div className="valid-profile-wraper">
-        <div className="valid-profile">
-          <Formik
-            initialValues={this.props.data}
-            onSubmit={(values, { setSubmitting }, cb = this.props.toggle) => {
-              setSubmitting(true);
-              setTimeout(() => {
-                console.log("Saved ", values);
-              }, 500);
-              cb(values);
-              setSubmitting(false);
-            }}
-            validationSchema={Yup.object().shape({
-              fname: Yup.string().required("Required"),
-              lname: Yup.string().required("Required"),
-              gender: Yup.string().required("Required"),
-              dob: Yup.date().required("Required"),
-              email: Yup.string().email().required("Required"),
-              address: Yup.string().required("Required"),
-            })}
-          >
-            {(props) => {
-              const {
-                values,
-                touched,
-                errors,
-                isSubmitting,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-              } = props;
-              return (
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                  <div className="label-style">
-                    <label htmlFor="fname">First Name</label>
-                  </div>
-                  <div className="input-style">
-                    <input
-                      type="text"
-                      name="fname"
-                      value={values.fname}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Enter Your First Name"
-                      className={errors.fname && touched.fname && "error"}
+      <div className="profile-validation-popup">
+        <div className="valid-profile-wraper">
+          <div className="valid-profile">
+            <div className="centered">
+              <h2>Edit Details</h2>
+            </div>
+            <Formik
+              initialValues={this.state.data}
+              onSubmit={(values, { setSubmitting }, cb = this.props.toggle) => {
+                setSubmitting(true);
+                setTimeout(() => {
+                  console.log("Saved ", values);
+                }, 500);
+                cb(values);
+                setSubmitting(false);
+              }}
+              validationSchema={Yup.object().shape({
+                fname: Yup.string().required("Required"),
+                lname: Yup.string().required("Required"),
+                gender: Yup.string().required("Required"),
+                dob: Yup.date().required("Required"),
+                email: Yup.string().email().required("Required"),
+                address: Yup.string().required("Required"),
+              })}
+            >
+              {(props) => {
+                const {
+                  values,
+                  touched,
+                  errors,
+                  isSubmitting,
+                  handleSubmit,
+                } = props;
+                return (
+                  <form autoComplete="off" onSubmit={handleSubmit}>
+                    <div>
+                      <div className="div-name">
+                        <label htmlFor="fname">First Name</label>
+                        <br />
+                        <br />
+                        <Field
+                          type="text"
+                          name="fname"
+                          value={values.fname}
+                          placeholder="Enter Your First Name"
+                          contentEditable="true"
+                          className={errors.fname && touched.fname && "error"}
+                          onChange={this.firstNameChange}
+                        />
+                        <br />
+                        <br />
+                        {errors.fname && touched.fname && (
+                          <div className="input-feedback">{errors.fname}</div>
+                        )}
+                      </div>
+                      <div className="div-name div-name-inner">
+                        <label htmlFor="lname">Last Name</label>
+                        <br />
+                        <br />
+                        <Field
+                          type="text"
+                          name="lname"
+                          value={values.lname}
+                          placeholder="Enter Your Last Name"
+                          contentEditable="true"
+                          className={errors.lname && touched.lname && "error"}
+                          onChange={this.lastNameChange}
+
+                        />
+                        <br />
+                        <br />
+                        {errors.lname && touched.lname && (
+                          <div className="input-feedback">{errors.lname}</div>
+                        )}
+                      </div>
+                    </div>
+                    <label htmlFor="male">Male</label>
+
+                    <Field
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      className={
+                        "input-gender" ||
+                        (errors.gender && touched.gender && "error")
+                      }
+                      defaultChecked={values.gender === "Male"}
+                      onChange={()=>this.genderChange('M')}
                     />
-                  </div>
 
-                  {errors.fname && touched.fname && (
-                    <div className="input-feedback">{errors.fname}</div>
-                  )}
+                    <label htmlFor="female">Female</label>
 
-                  <div className="label-style">
-                    <label htmlFor="lname">Last Name</label>
-                  </div>
-                  <div className="input-style">
-                    <input
-                      type="text"
-                      name="lname"
-                      value={values.lname}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Enter Your Last Name"
-                      className={errors.lname && touched.lname && "error"}
+                    <Field
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      className={
+                        "input-gender" ||
+                        (errors.gender && touched.gender && "error")
+                      }
+                      defaultChecked={values.gender === "Female"}
+                      onChange={()=>this.genderChange('F')}
+
                     />
-                  </div>
-                  {errors.lname && touched.lname && (
-                    <div className="input-feedback">{errors.lname}</div>
-                  )}
-
-                  <div className="input-style">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td>
-                          <div className='gender' >
-
-                            <label className='gender' htmlFor="male">Male</label>
-                            </div>
-                          </td>
-                          <td/>
-                          <td>
-                            <input
-                              type="radio"
-                              name="gender"
-                              value="Male"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className={
-                                errors.gender && touched.gender && "error"
-                              }
-                              defaultChecked={values.gender === "Male"}
-                            />
-                          </td>
-                          <td/>
-                          <td>
-                            <div className='gender' >
-                            <label htmlFor="female">Female</label>
-                            </div>
-                          </td>
-                          <td width="20px" />
-                          <td>
-                            <input
-                              type="radio"
-                              name="gender"
-                              value="Female"
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className={
-                                errors.gender && touched.gender && "error"
-                              }
-                              defaultChecked={values.gender === "Female"}
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="label-style">
+                    <br />
+                    <br />
                     <label htmlFor="dob">Date of Birth</label>
-                  </div>
-                  <div className="input-style">
-                    <input
+                    <br />
+                    <br />
+                    <Field
                       type="date"
                       name="dob"
                       value={values.dob}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
                       placeholder="Enter Your Date Of Birth"
                       className={
-                        errors.dob && touched.dob && "error" && "input-style"
+                        "input-style" || (errors.dob && touched.dob && "error")
                       }
+                      onChange={()=>this.dobChange('M')}
+
                     />
-                  </div>
+                    <br />
+                    <br />
+                    {errors.dob && touched.dob && (
+                      <div className="input-feedback">{errors.dob}</div>
+                    )}
 
-                  {errors.dob && touched.dob && (
-                    <div className="input-feedback">{errors.dob}</div>
-                  )}
-
-                  <div className="label-style">
                     <label htmlFor="email">Email</label>
-                  </div>
-
-                  <div className="input-style">
-                    <input
+                    <br />
+                    <br />
+                    <Field
                       type="text"
                       name="email"
                       value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
                       placeholder="Enter Your email"
-                      className={errors.email && touched.email && "error"}
+                      className={
+                        "input-style" ||
+                        (errors.email && touched.email && "error")
+                      }
+                      onChange={()=>this.emailChange('M')}
                     />
-                  </div>
-                  {errors.email && touched.email && (
-                    <div className="input-feedback">{errors.email}</div>
-                  )}
-                  <div className="label-style">
+                    <br />
+                    <br />
+                    {errors.email && touched.email && (
+                      <div className="input-feedback">{errors.email}</div>
+                    )}
+
                     <label htmlFor="address">Address</label>
-                  </div>
-                  <div className="input-style">
-                    <textarea
+                    <br />
+                    <br />
+                    <Field
                       name="address"
-                      rows="7"
-                      cols="40"
+                      contentEditable="true"
                       placeholder="Enter Your Address"
                       value={values.address}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={errors.address && touched.address && "error"}
+                      className={
+                        "input-style" ||
+                        (errors.address && touched.address && "error")
+                      }
+                      onChange={()=>this.addressChange('M')}
+
                     />
-                  </div>
-                  {errors.address && touched.address && (
-                    <div className="input-feedback">{errors.address}</div>
-                  )}
-                  <div className="block">
-                    <div>
-                      <button type="submit" disabled={isSubmitting}>
+                    <br />
+                    <br />
+                    {errors.address && touched.address && (
+                      <div className="input-feedback">{errors.address}</div>
+                    )}
+                    <div className="centered">
+                      <button type="submit" onSubmit={this.submit}
+                      disabled={isSubmitting}>
                         Save
                       </button>
                     </div>
-                  </div>
-                </form>
-              );
-            }}
-          </Formik>
+                  </form>
+                );
+              }}
+            </Formik>
+          </div>
         </div>
       </div>
     );

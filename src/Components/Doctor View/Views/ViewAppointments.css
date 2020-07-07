@@ -6,12 +6,31 @@
     padding:5px;
     margin-top:2px;
 }
+.app-first{
+    display: flex;
+    width:70%;
+    justify-content: space-around;
+    margin-left:25%;
+    padding:5px;
+    margin-top:2px;
+}
+.individual-appoint{
+    width:100%;
+    margin-left:0%;
+}
+.app-details:hover{
+    box-shadow: 0vh 0vh 1vh 0.5vh coral;
+}
+.app-first div{
+    box-shadow: none;
+
+}
 /* .box{
     border:1px solid black
 } */
 .color.color {
     width:20%;
-    background: transparent;
+    background: white;
     color:black;
     text-shadow: none;
      font-weight:bold;
@@ -35,3 +54,15 @@
      clear:both;
      margin-left:10%
  }
+.app-details button{
+    padding:5px;
+    background-color:coral;
+    font-weight: bold;
+    color:white;
+    text-shadow:1px 1px black;
+    border-radius:20%
+}
+.app-details button:hover{
+    transition:0.4s;
+    transform: scale(1.1);
+}

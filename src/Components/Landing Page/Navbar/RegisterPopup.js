@@ -30,7 +30,7 @@ class RegisterPopup extends React.Component{
         }
     }
     componentDidMount=()=>{
-        fetch('http://localhost:8080/register/department', {
+        fetch(`/api/register/department`, {
           method: 'get',
           headers: {'Content-Type': 'application/json'},
         })
@@ -99,7 +99,7 @@ class RegisterPopup extends React.Component{
     
   submitF=()=>{
       console.log('entered');
-    fetch('http://localhost:8080/register', {
+    fetch(`/api/register`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

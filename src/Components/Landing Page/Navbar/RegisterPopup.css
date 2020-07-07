@@ -1,5 +1,5 @@
 .register-container{
-    background-color: white;
+    background-color: lightblue;
     width:40%;
     height:650px;
     display:block;
@@ -11,7 +11,7 @@
     border-radius: 2vh;
     margin-right:30%;
     margin-top: 5%;
-    box-shadow: 0vh 0vh 1vh 1vh white;
+    box-shadow: 0vh 0vh 2vh 2vh white;
 }
 .register-container hr{
     width:40%;
