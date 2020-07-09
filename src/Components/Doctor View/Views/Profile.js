@@ -16,7 +16,9 @@ class Profile extends React.Component {
       gender: "Male",
       dob: "dd-mm-yyyy",
       email: "john@gmail.com",
+      phone: "",
       patId: "111100",
+      experience: "",
       address: "Format",
       department: "",
       qualification: "",
@@ -50,8 +52,9 @@ class Profile extends React.Component {
   };
 
   saveAndToggle = (newdata) => {
+    this.setState(newdata);
     this.toggle();
-    //this.setState({ data: newdata });
+    //this.setState();
     console.log("/n", newdata);
   };
 
@@ -68,7 +71,6 @@ class Profile extends React.Component {
               <tr>
                 <img src={dp} alt="Profile pic" />
               </tr>
-
               <br />
               <br />
               <tr>
